@@ -8,40 +8,43 @@ import {
     ScrollView,
 } from 'react-native'
 import InputLogin from '../components/InputLogin';
+import MyButtons from '../components/MyButtons';
+
+
 
 const Login = () => {
     return(
-        <View style={styles.container}>
-            <ImageBackground style={styles.imagem} source={require('../images/background.jpg')} >
-                <View style={styles.container}>
-                    <View style={styles.header}>
-                        <Image style={styles.icon} source={require('../images/vaccine.png')} />
-                        <Text style={styles.title}>MyHealth</Text>
-                    </View>
-                    <View style={styles.header}>
-                        <Text style={styles.label}>Controle as suas vacinas e fique seguro</Text>
-                    </View>
-                    <View style={styles.espaco}>
-                        <InputLogin placeholder="Digite o seu email..." label="E-mail" />
-                        <InputLogin placeholder="Digite a sua senha..." label="Senha" />
-                    </View>
+        <ImageBackground style={styles.imagem} source={require('../images/background.jpg')} >
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <Image style={styles.icon} source={require('../images/vaccine.png')} />
+                    <Text style={styles.title}>MyHealth</Text>
                 </View>
-            </ImageBackground>
-        </View>
+                <View>
+                    <Text style={styles.label}>Controle as suas vacinas e fique seguro</Text>
+                </View>
+                <View style={styles.inputs}>
+                    <InputLogin placeholder="Digite o seu email..." label="E-mail" />
+                    <InputLogin placeholder="Digite a sua senha..." label="Senha" />
+                </View>
+                <View style={styles.buttonEntrar}>
+                    <MyButtons label="ENTRAR"/>
+                </View>
+            </View>
+        </ImageBackground>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: 'rgba(128,128,128, 0.8)'
+        backgroundColor: 'rgba(128,128,128, 0.8)',
+        height: '100%'
     },
     imagem: {
-        flex: 1,
         width: 420,
-        resizeMode: 'stretch',
+        height: 660
     },
     title: {
         color: 'cornflowerblue',
@@ -69,8 +72,12 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         marginTop: 45,
     },
-    espaco: {
-        marginTop: 40
+    inputs: {
+        marginTop: 40,
+    },
+    buttonEntrar: {
+        marginTop: 30,
+        width: 160,
     }
 })
 

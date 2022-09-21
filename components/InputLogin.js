@@ -12,32 +12,35 @@ const InputLogin = (props) => {
     const {placeholder, label} = props;
 
     return (
-        <View style={styles.container}>
+        <View style={styles.screen}>
             <Text style={styles.texto}>{label}</Text>
-            <TextInput style={styles.input} placeholder={placeholder} />
+            <TextInput secureTextEntry={true} style={styles.input} placeholder={placeholder} />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-       flexDirection: 'row',
-       alignItems: 'center',
+    screen: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        width: '90%',
     },
     texto: {
         fontSize: 22,
         color: 'white',
+        padding: 5,
         fontFamily: 'AveriaLibre-Regular',
     },
     input: {
-        fontSize: 22,
+        fontSize: 18,
         backgroundColor: 'white',
-        marginLeft: 10,
-        marginRight: 10,
         color: 'cornflowerblue',
-        width: 280,
-        marginTop: 15,
-        fontFamily: 'AveriaLibre-Regular',
-    }
+        marginBottom: 9,
+        marginTop: 9,
+        width: '70%',
+        height: 38,
+        
+    },
 })
 export default InputLogin;

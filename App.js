@@ -1,5 +1,4 @@
 import React from 'react';
-import MyInput from './components/MyInput'
 import Login from './screens/Login'
 import {
   StyleSheet,
@@ -11,18 +10,8 @@ import {
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Login />
-    </View>
+    <Login />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-})
 
 export default App;
