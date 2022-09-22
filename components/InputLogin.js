@@ -9,12 +9,12 @@ import {
 
 const InputLogin = (props) => {
 
-    const {placeholder, label} = props;
+    const {placeholder, label, secure} = props;
 
     return (
         <View style={styles.screen}>
             <Text style={styles.texto}>{label}</Text>
-            <TextInput secureTextEntry={true} 
+            <TextInput secureTextEntry={secure}
                         style={styles.input} 
                         placeholder={placeholder} />
         </View>
@@ -27,6 +27,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-evenly',
         width: '90%',
+        paddingTop: 8,
+        paddingBottom: 8,
+        height: 60,
     },
     texto: {
         fontSize: 22,
@@ -38,10 +41,8 @@ const styles = StyleSheet.create({
         fontSize: 18,
         backgroundColor: 'white',
         color: 'cornflowerblue',
-        marginBottom: 9,
-        marginTop: 9,
         width: '80%',
-        height: 38,
+        
     },
 })
 export default InputLogin;

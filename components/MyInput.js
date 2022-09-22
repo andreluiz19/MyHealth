@@ -15,7 +15,8 @@ const MyInput = (props) => {
         <View>
             <Text style={styles.texto}>{label}</Text>
             <TextInput style={styles.input}
-            placeholder={placeholder} />
+              placeholder={placeholder}
+            />
         </View>
     );
 }
@@ -27,9 +28,9 @@ const styles = StyleSheet.create({
     input: {
       fontSize: 30,
       borderColor: 'black',
-      borderWidth: 1,
       marginLeft: 10,
-      marginRight: 10,    
+      marginRight: 10,
+      secu    
     }
 })
 

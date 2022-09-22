@@ -39,7 +39,7 @@ const Login = (props) => {
 
                 <View style={styles.inputs}>
                     <InputLogin placeholder="Digite o seu email..." label="E-mail" valor={email} setText={setEmail} />
-                    <InputLogin placeholder="Digite a sua senha..." label="Senha" valor={senha} setText={setSenha} />
+                    <InputLogin placeholder="Digite a sua senha..." label="Senha" valor={senha} setText={setSenha} secure={true} />
                 </View>
                 
                 <View style={styles.buttonEntrar}>
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     },
     buttonCriarConta: {
         marginTop: 50,
-        width: 200,
+        width: 220,
     },
     buttonEsqueceuSenha: {
         marginTop: 50,
