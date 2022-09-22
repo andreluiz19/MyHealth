@@ -14,7 +14,9 @@ const InputLogin = (props) => {
     return (
         <View style={styles.screen}>
             <Text style={styles.texto}>{label}</Text>
-            <TextInput secureTextEntry={true} style={styles.input} placeholder={placeholder} />
+            <TextInput secureTextEntry={true} 
+                        style={styles.input} 
+                        placeholder={placeholder} />
         </View>
     );
 }
@@ -38,9 +40,8 @@ const styles = StyleSheet.create({
         color: 'cornflowerblue',
         marginBottom: 9,
         marginTop: 9,
-        width: '70%',
+        width: '80%',
         height: 38,
-        
     },
 })
 export default InputLogin;

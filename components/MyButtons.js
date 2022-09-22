@@ -9,30 +9,25 @@ import {
 
 const MyButtons = (props) =>{
     
-    const {label} = props;
+    const {label, cor, onPress} = props;
 
     return(
         <View>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={{backgroundColor:cor, padding: 10}} onPress={onPress}>
                 <Text style={styles.texto}>{label}</Text>
             </TouchableOpacity>
         </View>
     );
 }
 
+
 const styles = StyleSheet.create({
-    button: {
-        backgroundColor: '#37BD6D',
-        padding: 10,
-        textAlign: 'center'
-    
-    },
     texto: {
         fontFamily: 'AveriaLibre-Regular',
         fontSize: 22,
         color: 'white',
         textAlign: 'center'
-    }
+    },
 })
 
 export default MyButtons;
