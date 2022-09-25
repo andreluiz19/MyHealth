@@ -9,24 +9,23 @@ import {
 
 const MyButtons = (props) =>{
     
-    const {label, cor, onPress} = props;
+    const {label, onPress, style} = props;
 
     return(
         <View>
-            <TouchableOpacity style={{backgroundColor:cor, padding: 10}} onPress={onPress}>
+            <TouchableOpacity style={style} onPress={onPress}>
                 <Text style={styles.texto}>{label}</Text>
             </TouchableOpacity>
         </View>
     );
 }
 
-
 const styles = StyleSheet.create({
     texto: {
         fontFamily: 'AveriaLibre-Regular',
         fontSize: 22,
         color: 'white',
-        textAlign: 'center'
+        textAlign: 'center',
     },
 })
 

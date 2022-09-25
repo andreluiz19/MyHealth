@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react';
 import Login from './screens/Login'
 import Home from './screens/Home'
+import CreateAccount from './screens/CreateAccount'
 
 const Stack = createNativeStackNavigator()
 
@@ -20,9 +21,21 @@ const App = () => {
             headerShown: false
           }}
         />
+        <Stack.Screen name="CreateAccount" component={CreateAccount} 
+          options={{
+            title: "MyHealth",
+            headerStyle: {
+              backgroundColor: '#C1E7E3',
+            },
+            headerTitleStyle: {
+              fontFamily: 'AveriaLibre-Bold',
+              fontSize: 30,
+              color: '#419ED7',
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
-
 export default App;

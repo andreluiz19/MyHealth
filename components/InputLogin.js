@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         color: 'cornflowerblue',
         width: '80%',
-        
+        fontFamily: 'AveriaLibre-Regular',
     },
 })
 export default InputLogin;

@@ -5,7 +5,6 @@ import {
     StyleSheet,
     Text,
     ImageBackground,
-    Button,
 } from 'react-native'
 import InputLogin from '../components/InputLogin';
 import MyButtons from '../components/MyButtons';
@@ -16,11 +15,15 @@ const Login = (props) => {
 
     const [email, setEmail] = useState()
     const [senha, setSenha] = useState()
-
     
+
+
     const goToHome = () => {
-        props.navigation.push('Home')
-        console.log("Está funcionando!")
+        props.navigation.navigate('Home')
+    }
+
+    const goToCreateAccount = () => {
+        props.navigation.navigate('CreateAccount')
     }
 
     return(
@@ -42,14 +45,14 @@ const Login = (props) => {
                     <InputLogin placeholder="Digite a sua senha..." label="Senha" valor={senha} setText={setSenha} secure={true} />
                 </View>
                 
-                <View style={styles.buttonEntrar}>
-                    <MyButtons label="Entrar" cor="#37BD6D" onPress={goToHome} />
+                <View>
+                    <MyButtons label="Entrar" style={styles.buttonEntrar} onPress={goToHome} />
                 </View>
-                <View style={styles.buttonCriarConta}>
-                    <MyButtons label="Criar minha conta" cor="#419ED7" />
+                <View>
+                    <MyButtons label="Criar minha conta" style={styles.buttonCriarConta} onPress={goToCreateAccount} />
                 </View>
-                <View style={styles.buttonEsqueceuSenha}>
-                    <MyButtons label="Esqueci minha senha" cor="#B0CCDE" />
+                <View>
+                    <MyButtons label="Esqueci minha senha" style={styles.buttonEsqueceuSenha} />
                 </View>
                 
             </View>
@@ -99,17 +102,27 @@ const styles = StyleSheet.create({
         marginTop: 40,
     },
     buttonEntrar: {
-        marginTop: 70,
-        width: 140,
+        marginTop: 60,
+        backgroundColor: '#37BD6D',
+        width: 160,
+        padding: 10,
+        elevation: 10
     },
     buttonCriarConta: {
-        marginTop: 50,
-        width: 220,
+        marginTop: 60,
+        backgroundColor: '#419ED7',
+        width: 240,
+        padding: 10,
+        elevation: 10
     },
     buttonEsqueceuSenha: {
-        marginTop: 50,
+        marginTop: 60,
+        backgroundColor: '#B0CCDE',
+        width: 240,
+        padding: 4,
+        elevation: 10
     },
-
+    
 })
 
 export default Login;
