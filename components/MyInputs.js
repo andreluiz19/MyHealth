@@ -7,16 +7,18 @@ import {
     StyleSheet
 } from 'react-native';
 
-const InputLogin = (props) => {
+const MyInputs = (props) => {
 
-    const {placeholder, label, secure} = props;
+    const {placeholder, label, value, setValue, secure, style} = props;
 
     return (
-        <View style={styles.screen}>
-            <Text style={styles.texto}>{label}</Text>
-            <TextInput secureTextEntry={secure}
-                        style={styles.input} 
-                        placeholder={placeholder} />
+        <View style={[styles.screen, style]}>
+            <Text style={[styles.texto, style]}>{label}</Text>
+            <TextInput placeholder={placeholder} 
+                        style={[styles.input, style]}
+                        value={value} 
+                        onChangeText={setValue}
+                        secureTextEntry={secure}/>
         </View>
     );
 }
@@ -25,10 +27,10 @@ const styles = StyleSheet.create({
     screen: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-evenly',
+        justifyContent: 'flex-end',
         width: '90%',
-        paddingTop: 8,
-        paddingBottom: 8,
+        paddingTop: 10,
+        paddingBottom: 10,
         height: 60,
     },
     texto: {
@@ -45,4 +47,4 @@ const styles = StyleSheet.create({
         fontFamily: 'AveriaLibre-Regular',
     },
 })
-export default InputLogin;
+export default MyInputs;

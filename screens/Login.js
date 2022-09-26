@@ -6,17 +6,30 @@ import {
     Text,
     ImageBackground,
 } from 'react-native'
-import InputLogin from '../components/InputLogin';
+
+import MyInputs from '../components/MyInputs';
 import MyButtons from '../components/MyButtons';
 
-
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../config/firebase';
+import { TextInput } from 'react-native-gesture-handler';
 
 const Login = (props) => {
 
     const [email, setEmail] = useState()
     const [senha, setSenha] = useState()
     
-
+    const loginUser = () => {
+        signInWithEmailAndPassword(auth, email, senha)
+        .then( (userCredential) => {
+            console.log("Usuário autenticado com sucesso!")
+            goToHome()
+        })
+        .catch( (error) => {
+            console.log("Ocorreu um erro ao atuenticar!")
+            console.log("Erro: " + error.message)
+        })
+    }
 
     const goToHome = () => {
         props.navigation.navigate('Home')
@@ -41,12 +54,12 @@ const Login = (props) => {
                 </View>
 
                 <View style={styles.inputs}>
-                    <InputLogin placeholder="Digite o seu email..." label="E-mail" valor={email} setText={setEmail} />
-                    <InputLogin placeholder="Digite a sua senha..." label="Senha" valor={senha} setText={setSenha} secure={true} />
+                    <MyInputs placeholder="Digite o seu email..." label="E-mail" value={email} setValue={setEmail} />
+                    <MyInputs placeholder="Digite a sua senha..." label="Senha" value={senha} setValue={setSenha} secure={true} />
                 </View>
                 
                 <View>
-                    <MyButtons label="Entrar" style={styles.buttonEntrar} onPress={goToHome} />
+                    <MyButtons label="Entrar" style={styles.buttonEntrar} onPress={loginUser} />
                 </View>
                 <View>
                     <MyButtons label="Criar minha conta" style={styles.buttonCriarConta} onPress={goToCreateAccount} />
@@ -122,7 +135,9 @@ const styles = StyleSheet.create({
         padding: 4,
         elevation: 10
     },
-    
+    width: {
+        width: '80%'
+    }
 })
 
 export default Login;

@@ -4,6 +4,7 @@ import React from 'react';
 import Login from './screens/Login'
 import Home from './screens/Home'
 import CreateAccount from './screens/CreateAccount'
+import IconHeader from './components/IconHeader';
 
 const Stack = createNativeStackNavigator()
 
@@ -32,6 +33,10 @@ const App = () => {
               fontSize: 30,
               color: '#419ED7',
             },
+            headerBackVisible: false,
+            headerLeft: () => (
+              <IconHeader />
+            )
           }}
         />
       </Stack.Navigator>
@@ -39,3 +44,4 @@ const App = () => {
   );
 };
 export default App;
+
