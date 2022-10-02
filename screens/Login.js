@@ -42,6 +42,10 @@ const Login = (props) => {
         props.navigation.navigate('CreateAccount')
     }
 
+    const goToForgotPassword = () => {
+        props.navigation.navigate('ForgotPassword')
+    }
+
     return(
         <ImageBackground style={styles.imagem} source={require('../images/background.jpg')} >
             
@@ -68,7 +72,7 @@ const Login = (props) => {
                     <MyButtons label="Criar minha conta" style={styles.buttonCriarConta} onPress={goToCreateAccount} />
                 </View>
                 <View>
-                    <MyButtons label="Esqueci minha senha" style={styles.buttonEsqueceuSenha} />
+                    <MyButtons label="Esqueci minha senha" style={styles.buttonEsqueceuSenha} onPress={goToForgotPassword} />
                 </View>
                 
             </View>

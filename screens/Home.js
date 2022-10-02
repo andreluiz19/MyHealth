@@ -43,9 +43,10 @@ const listaVacinas = [
     }
   ]
 
+
 const Home = () => {
     return(
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
 
             <View>
                 <IconSearch style={styles.icon}></IconSearch>
@@ -55,10 +56,10 @@ const Home = () => {
             <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} />} numColumns={2} />
 
             <View style={styles.button}>
-                <MyButtons label="Nova vacina" style={styles.buttonEntrar} />
+                <MyButtons label="Nova vacina" style={styles.buttonVacina} />
             </View>
 
-        </ScrollView>
+        </View>
     );
 }
 
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ADD4D0',
         height: '100%',
     },
-    buttonEntrar: {
+    buttonVacina: {
         backgroundColor: '#37BD6D',
         width: 160,
         padding: 10,
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        marginTop: 120
+        marginBottom: 30,
     },
     input: {
         width: '100%',
