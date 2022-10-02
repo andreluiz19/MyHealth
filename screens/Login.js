@@ -20,6 +20,7 @@ const Login = (props) => {
     const [senha, setSenha] = useState()
     
     const loginUser = () => {
+        /*
         signInWithEmailAndPassword(auth, email, senha)
         .then( (userCredential) => {
             console.log("Usuário autenticado com sucesso!")
@@ -29,6 +30,8 @@ const Login = (props) => {
             console.log("Ocorreu um erro ao atuenticar!")
             console.log("Erro: " + error.message)
         })
+        */
+        goToHome()
     }
 
     const goToHome = () => {
@@ -83,7 +86,7 @@ const styles = StyleSheet.create({
     },
     imagem: {
         width: 420,
-        height: 660
+        height: 660,
     },
     title: {
         color: '#419ED7',

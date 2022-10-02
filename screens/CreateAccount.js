@@ -2,10 +2,12 @@ import React, {useState} from 'react'
 import {
     View,
     StyleSheet,
+    Text
 } from 'react-native'
 
 import MyInputs from '../components/MyInputs';
 import MyButtons from '../components/MyButtons';
+import CheckBox from '../components/CheckBox';
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase'
@@ -16,6 +18,8 @@ const CreateAccount = (props) => {
     const [senha, setSenha] = useState()
     const [repetirSenha, setRepetirSenha] = useState()
     const [nomeCompleto, setNomeCompleto] = useState()
+    const [sexoM, setSexoM] = useState('Masculino')
+    const [sexoF, setSexoF] = useState('Feminino')
 
     const newUser = () => {
         createUserWithEmailAndPassword(auth, email, senha)
@@ -30,10 +34,23 @@ const CreateAccount = (props) => {
         })
     }
     
+    const onChange = () => {
+
+    }
+
     return(
         <View style={styles.container}>
             <View style={styles.input}>
                 <MyInputs style={styles.texto} label="Nome completo" value={nomeCompleto} setValue={setNomeCompleto} />
+            </View>
+            <View>
+            <View style={styles.checkboxContainer}>
+                <Text style={styles.label}>Sexo</Text>
+                <CheckBox label="Masculino" value={sexoM} setValue={setSexoM} />
+                <CheckBox label="Feminino" value={sexoF} setValue={setSexoF} />
+            </View>
+            </View>
+            <View style={styles.input}>
                 <MyInputs style={styles.texto} label="E-mail" value={email} setValue={setEmail} />
                 <MyInputs style={styles.texto} label="Senha" value={senha} setValue={setSenha} secure={true} />
                 <MyInputs style={styles.texto} label="Repetir senha" value={repetirSenha} setValue={setRepetirSenha} secure={true} />
@@ -48,10 +65,11 @@ const CreateAccount = (props) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#ADD4D0',
-        height: '100%'
+        height: '100%',
+        paddingTop: 50
     },
     buttonEntrar: {
-        marginTop: 240,
+        marginTop: 170,
         backgroundColor: '#37BD6D',
         width: 160,
         padding: 10,
@@ -59,6 +77,7 @@ const styles = StyleSheet.create({
     },
     texto: {
         fontSize: 18,
+        fontFamily: 'AveriaLibre-Regular',
     },
     center: {
         alignItems: 'center'
@@ -66,7 +85,18 @@ const styles = StyleSheet.create({
     input: {
         alignItems: 'flex-end',
         width: '90%',
-        marginLeft: 30
+        marginLeft: 30,
+    },
+    checkboxContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: 88,
+        marginVertical: 10
+    },
+    label: {
+        fontSize: 18,
+        fontFamily: 'AveriaLibre-Regular',
+        color: 'white'
     }
 })
 

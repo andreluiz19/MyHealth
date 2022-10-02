@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     input: {
         fontSize: 18,
         backgroundColor: 'white',
-        color: 'cornflowerblue',
+        color: '#419ED7',
         width: '80%',
         fontFamily: 'AveriaLibre-Regular',
     },
