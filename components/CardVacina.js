@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
         width: Dimensions.get('window').width/2-10,
-        height: Dimensions.get('window').height-495,
+        height: 200,
         borderRadius: 10,
         marginHorizontal: 5,
         marginVertical: 5,

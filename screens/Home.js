@@ -1,16 +1,14 @@
 import React from 'react'
+import { createDrawerNavigator } from '@react-navigation/drawer'
+
 import {
-    View,
-    FlatList,
     StyleSheet,
-    Dimensions,
-    ScrollView
+    Image
 } from 'react-native'
 
-import CardVacina from '../components/CardVacina';
-import IconSearch from '../components/IconSearch';
-import MyButtons from '../components/MyButtons';
-import MyInputs from '../components/MyInputs';
+import MyDrawer from '../components/MyDrawer';
+import HomeContent from '../screens/HomeContent';
+import NextVaccines from '../screens/NextVaccines';
 
 const listaVacinas = [
     {
@@ -43,52 +41,68 @@ const listaVacinas = [
     }
   ]
 
+const Drawer = createDrawerNavigator()
 
-const Home = () => {
+const Home = (props) => {
     return(
-        <View style={styles.container}>
-
-            <View>
-                <IconSearch style={styles.icon}></IconSearch>
-                <MyInputs style={styles.input} placeholder="        PESQUISAR VACINA..." />
-            </View>
-
-            <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} />} numColumns={2} />
-
-            <View style={styles.button}>
-                <MyButtons label="Nova vacina" style={styles.buttonVacina} />
-            </View>
-
-        </View>
+        <Drawer.Navigator drawerContent={(props) => <MyDrawer {...props} />} screenOptions={{drawerActiveTintColor: '#419ED7', drawerInactiveTintColor: '#419ED7', drawerActiveBackgroundColor: '#ADD4D0', 
+            drawerInactiveBackgroundColor: '#ADD4D0', drawerStyle: { backgroundColor: '#ADD4D0' }}}   >
+            <Drawer.Screen name="HomeContent" component={HomeContent} 
+                options={{
+                    title: "Minhas vacinas",
+                    headerStyle: {
+                        backgroundColor: '#C1E7E3',
+                    },
+                    headerTitleStyle: {
+                        fontFamily: 'AveriaLibre-Bold',
+                        fontSize: 26,
+                        color: '#419ED7',
+                    },
+                    drawerIcon: () => 
+                        (<Image style={[styles.iconVaccine, {marginTop: 30}]} 
+                            source={require('../images/vaccine.png')} 
+                        />
+                    ),
+                    drawerLabelStyle: {
+                        fontFamily: 'AveriaLibre-Regular',
+                        fontSize: 18,
+                        marginTop: 30,
+                    }
+                }}
+            />
+            <Drawer.Screen name="NextVaccines" component={NextVaccines}
+                options={{
+                    title: "Próximas vacinas",
+                    headerStyle: {
+                        backgroundColor: '#C1E7E3',
+                    },
+                    headerTitleStyle: {
+                        fontFamily: 'AveriaLibre-Bold',
+                        fontSize: 26,
+                        color: '#419ED7',
+                    },
+                    drawerIcon: () => 
+                        (<Image style={styles.iconVaccine} 
+                            source={require('../images/calendar.png')} 
+                        />
+                    ),
+                    drawerLabelStyle: {
+                        fontFamily: 'AveriaLibre-Regular',
+                        fontSize: 18
+                    },
+                    
+                }}
+            />
+           
+        </Drawer.Navigator>
+        
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#ADD4D0',
-        height: '100%',
-    },
-    buttonVacina: {
-        backgroundColor: '#37BD6D',
-        width: 160,
-        padding: 10,
-        elevation: 10,
-    },
-    button: {
-        alignItems: 'center',
-        marginBottom: 30,
-    },
-    input: {
-        width: '100%',
-        paddingHorizontal: 5,
-    },
-    teste: {
-        borderColor: 'black',
-        borderWidth: 2,
-    },
-    icon: {
-        position: 'absolute',
-        zIndex: 1
+    iconVaccine: {
+        width: 25,
+        height: 25,
     }
 })
 

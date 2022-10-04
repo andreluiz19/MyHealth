@@ -5,6 +5,7 @@ import {
     StyleSheet,
     Text,
     ImageBackground,
+    Dimensions
 } from 'react-native'
 
 import MyInputs from '../components/MyInputs';
@@ -12,7 +13,6 @@ import MyButtons from '../components/MyButtons';
 
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../config/firebase';
-import { TextInput } from 'react-native-gesture-handler';
 
 const Login = (props) => {
 
@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     imagem: {
-        width: 420,
-        height: 660,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
     },
     title: {
         color: '#419ED7',

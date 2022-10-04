@@ -8,6 +8,7 @@ import Home from './screens/Home'
 import CreateAccount from './screens/CreateAccount'
 import IconHeader from './components/IconHeader';
 import ForgotPassword from './screens/ForgotPassword';
+import NewVaccine from './screens/NewVaccine';
 
 const Stack = createNativeStackNavigator()
 
@@ -60,9 +61,13 @@ const App = () => {
             )
           }}
         />
+        <Stack.Screen name="NewVaccine" component={NewVaccine}
+          options={{
+            headerShown: false
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 export default App;
-
