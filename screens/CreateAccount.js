@@ -2,12 +2,13 @@ import React, {useState} from 'react'
 import {
     View,
     StyleSheet,
-    Text
+    Text,
+    Dimensions
 } from 'react-native'
 
 import MyInputs from '../components/MyInputs';
 import MyButtons from '../components/MyButtons';
-import CheckBox from '../components/CheckBox';
+import RadioButton from '../components/RadioButton';
 import IconCalendar from '../components/IconCalendar';
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -49,22 +50,22 @@ const CreateAccount = (props) => {
         <View style={styles.container}>
 
             <View style={styles.input}>
-                <MyInputs style={styles.texto} label="Nome completo" value={nomeCompleto} setValue={setNomeCompleto} />
+                <MyInputs styleText={styles.texto} label="Nome completo" value={nomeCompleto} setValue={setNomeCompleto} />
             </View>
 
-            <View style={styles.checkboxContainer}>
+            <View style={styles.radioContainer}>
                 <Text style={styles.label}>Sexo</Text>
-                <CheckBox label="Masculino" value={sexoM} setValue={setSexoM} />
-                <CheckBox label="Feminino" value={sexoF} setValue={setSexoF} />
+                <RadioButton label="Masculino" value={sexoM} setValue={setSexoM} />
+                <RadioButton label="Feminino" value={sexoF} setValue={setSexoF} />
             </View>
 
             <IconCalendar style={styles.icon} />
 
             <View style={styles.input}>
-                <MyInputs style={styles.texto} label="Data nascimento" value={dataNasc} setValue={setDataNasc} />
-                <MyInputs style={styles.texto} label="E-mail" value={email} setValue={setEmail} />
-                <MyInputs style={styles.texto} label="Senha" value={senha} setValue={setSenha} secure={true} />
-                <MyInputs style={styles.texto} label="Repetir senha" value={repetirSenha} setValue={setRepetirSenha} secure={true} />
+                <MyInputs styleText={styles.texto} label="Data nascimento" value={dataNasc} setValue={setDataNasc} />
+                <MyInputs styleText={styles.texto} label="E-mail" value={email} setValue={setEmail} />
+                <MyInputs styleText={styles.texto} label="Senha" value={senha} setValue={setSenha} secure={true} />
+                <MyInputs styleText={styles.texto} label="Repetir senha" value={repetirSenha} setValue={setRepetirSenha} secure={true} />
             </View>
 
             <View style={styles.center}>
@@ -98,10 +99,10 @@ const styles = StyleSheet.create({
     },
     input: {
         alignItems: 'flex-end',
-        width: '90%',
-        marginLeft: 30,
+        width: Dimensions.get('window').width * 0.8,
+        marginLeft: 70,
     },
-    checkboxContainer: {
+    radioContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         marginLeft: 88,

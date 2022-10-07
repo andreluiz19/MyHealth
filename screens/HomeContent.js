@@ -4,6 +4,8 @@ import {
     View,
     FlatList,
     StyleSheet,
+    TouchableOpacity,
+    Dimensions
 } from 'react-native'
 
 import CardVacina from '../components/CardVacina';
@@ -43,21 +45,27 @@ const listaVacinas = [
   ]
 
 
-const Home = (props) => {
+const HomeContent = (props) => {
 
     const goToNewVaccine = () => {
         props.navigation.navigate('NewVaccine')
     }
 
+    const goToEditVaccine = () => {
+        props.navigation.navigate('EditVaccine')
+    }
+
     return(
         
         <View style={styles.container}>
-            <View>
+            <View style={styles.inputContainer}>
                 <IconSearch style={styles.icon}></IconSearch>
-                <MyInputs style={styles.input} placeholder="        PESQUISAR VACINA..." />
+                <MyInputs styleInput={styles.input} placeholder="        PESQUISAR VACINA..." />
             </View>
 
-            <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} />} numColumns={2} />
+            
+            <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} onPress={goToEditVaccine} />} numColumns={2} />
+            
 
             <View style={styles.button}>
                 <MyButtons label="Nova vacina" style={styles.buttonVacina} onPress={goToNewVaccine} />
@@ -70,7 +78,7 @@ const Home = (props) => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#ADD4D0',
-        height: '100%',
+        height: Dimensions.get('window').height,
     },
     buttonVacina: {
         backgroundColor: '#37BD6D',
@@ -80,16 +88,20 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        marginBottom: 40,
+        marginBottom: 100,
     },
     input: {
-        width: '100%',
-        paddingHorizontal: 5,
+        width: Dimensions.get('window').width * 0.95,
+        height: 30,
+        padding: 0,
     },
     icon: {
         position: 'absolute',
         zIndex: 1,
+    },
+    inputContainer: {
+       marginRight: 10
     }
 })
 
-export default Home
+export default HomeContent

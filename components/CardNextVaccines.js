@@ -3,7 +3,7 @@ import React from 'react'
 import {
     Text,
     View,
-    StyleSheet
+    StyleSheet,
 } from 'react-native'
 
 const CardNextVaccines = (props) => {
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
         paddingLeft: 10
     },
     data: {
-        paddingLeft: 10
+        paddingLeft: 10,
+        color: 'gray'
     }
 })
 

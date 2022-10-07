@@ -9,6 +9,7 @@ import {
 import MyDrawer from '../components/MyDrawer';
 import HomeContent from '../screens/HomeContent';
 import NextVaccines from '../screens/NextVaccines';
+import EditVaccine from '../screens/EditVaccine';
 
 const listaVacinas = [
     {
@@ -44,6 +45,19 @@ const listaVacinas = [
 const Drawer = createDrawerNavigator()
 
 const Home = (props) => {
+
+    /*
+
+    <Drawer.Screen name="EditVaccine" component={EditVaccine}
+        options={{
+            drawerLabelStyle: {
+                display: 'none'
+            },
+        }}
+    />
+
+    */
+
     return(
         <Drawer.Navigator drawerContent={(props) => <MyDrawer {...props} />} screenOptions={{drawerActiveTintColor: '#419ED7', drawerInactiveTintColor: '#419ED7', drawerActiveBackgroundColor: '#ADD4D0', 
             drawerInactiveBackgroundColor: '#ADD4D0', drawerStyle: { backgroundColor: '#ADD4D0' }}}   >
@@ -90,10 +104,11 @@ const Home = (props) => {
                         fontFamily: 'AveriaLibre-Regular',
                         fontSize: 18
                     },
-                    
                 }}
             />
-           
+            
+            
+            
         </Drawer.Navigator>
         
     );

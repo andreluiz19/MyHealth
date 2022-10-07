@@ -4,12 +4,11 @@ import {
     TouchableOpacity,
     StyleSheet,
     Text,
-    ImageBackground,
 } from 'react-native'
 
-const CheckBox = (props) => {
+const RadioButton = (props) => {
 
-    const {label, value, setValue} = props
+    const {label, value, setValue, style, styleText} = props
 
     const checked = () => {
         if(value == 'Masculino'){
@@ -21,8 +20,8 @@ const CheckBox = (props) => {
 
     return(
         <View style={styles.container}>
-            <TouchableOpacity style={styles.checkbox} onPress={checked} />
-            <Text style={styles.texto}>{label}</Text>
+            <TouchableOpacity style={[styles.radio, style]} onPress={checked} />
+            <Text style={[styles.texto, styleText]}>{label}</Text>
         </View>
     );
 }
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center'
     },  
-    checkbox: {
+    radio: {
         height: 30,
         width: 30,
         borderRadius: 15,
@@ -53,4 +52,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default CheckBox
+export default RadioButton

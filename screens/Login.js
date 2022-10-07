@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     },
     inputs: {
         marginTop: 40,
+        width: '90%'
     },
     buttonEntrar: {
         marginTop: 60,

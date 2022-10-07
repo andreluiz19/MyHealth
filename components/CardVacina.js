@@ -4,19 +4,18 @@ import {
     Text,
     Image,
     StyleSheet,
-    Dimensions
+    Dimensions,
+    TouchableOpacity
 } from 'react-native'
-
-
-
 
 const CardVacina = (props) => {
 
     const {item} = props.item
-
+    const {onPress} = props
     return(
-        <View>
-
+        
+        <TouchableOpacity onPress={onPress}>
+            
             <View style={styles.card}>
                 <Text style={{fontSize: 22, color: '#3F92C5', fontFamily: 'AveriaLibre-Regular', marginTop: 5}}>{item.vacina}</Text>
                 <Text style={{fontSize: 16, color: 'white', backgroundColor: '#3F92C5', paddingHorizontal: 10, marginTop: 5, fontFamily: 'AveriaLibre-Regular'}}>{item.dose}</Text>
@@ -25,7 +24,8 @@ const CardVacina = (props) => {
                 <Text style={{fontSize: 14, color: '#FD7979', fontFamily: 'AveriaLibre-Regular'}}>{item.proximaDose}</Text>
             </View>
 
-        </View>
+        </TouchableOpacity>
+        
     )
 }
 

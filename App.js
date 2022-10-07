@@ -1,4 +1,3 @@
-import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react';
@@ -9,6 +8,8 @@ import CreateAccount from './screens/CreateAccount'
 import IconHeader from './components/IconHeader';
 import ForgotPassword from './screens/ForgotPassword';
 import NewVaccine from './screens/NewVaccine';
+import EditVaccine from './screens/EditVaccine';
+
 
 const Stack = createNativeStackNavigator()
 
@@ -63,7 +64,12 @@ const App = () => {
         />
         <Stack.Screen name="NewVaccine" component={NewVaccine}
           options={{
-            headerShown: false
+            //headerShown: false
+          }}
+        />
+        <Stack.Screen name="EditVaccine" component={EditVaccine} 
+          options={{
+            //headerShown: false
           }}
         />
       </Stack.Navigator>
@@ -71,3 +77,4 @@ const App = () => {
   );
 };
 export default App;
+

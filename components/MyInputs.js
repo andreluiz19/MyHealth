@@ -9,13 +9,13 @@ import {
 
 const MyInputs = (props) => {
 
-    const {placeholder, label, value, setValue, secure, style} = props;
+    const {placeholder, label, value, setValue, secure, style, styleText, styleInput} = props;
 
     return (
         <View style={[styles.screen, style]}>
-            <Text style={[styles.texto, style]}>{label}</Text>
+            <Text style={[styles.texto, styleText]}>{label}</Text>
             <TextInput placeholder={placeholder} 
-                        style={[styles.input, style]}
+                        style={[styles.input, styleInput]}
                         value={value} 
                         onChangeText={setValue}
                         secureTextEntry={secure}/>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        width: '90%',
+        width: '100%',
         paddingTop: 10,
         paddingBottom: 10,
         height: 60,

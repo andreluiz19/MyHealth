@@ -28,8 +28,8 @@ const ForgotPassword = () =>{
     return(
         <View style={styles.container}>
 
-             <View style={styles.input}>
-                <MyInputs placeholder="Digite seu email..." style={styles.texto} label="E-mail" value={email} setValue={setEmail} />
+            <View style={styles.input}>
+                <MyInputs placeholder="Digite seu email..." styleText={styles.texto} label="E-mail" value={email} setValue={setEmail} />
             </View>
 
             <View style={styles.center}>
@@ -60,5 +60,8 @@ const styles = StyleSheet.create({
     center: {
         alignItems: 'center'
     },
+    input: {
+        width: '90%'
+    }
 })
 export default ForgotPassword
