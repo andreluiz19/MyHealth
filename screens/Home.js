@@ -10,6 +10,7 @@ import MyDrawer from '../components/MyDrawer';
 import HomeContent from '../screens/HomeContent';
 import NextVaccines from '../screens/NextVaccines';
 import EditVaccine from '../screens/EditVaccine';
+import NewVaccine from '../screens/NewVaccine';
 
 const listaVacinas = [
     {
@@ -46,18 +47,6 @@ const Drawer = createDrawerNavigator()
 
 const Home = (props) => {
 
-    /*
-
-    <Drawer.Screen name="EditVaccine" component={EditVaccine}
-        options={{
-            drawerLabelStyle: {
-                display: 'none'
-            },
-        }}
-    />
-
-    */
-
     return(
         <Drawer.Navigator drawerContent={(props) => <MyDrawer {...props} />} screenOptions={{drawerActiveTintColor: '#419ED7', drawerInactiveTintColor: '#419ED7', drawerActiveBackgroundColor: '#ADD4D0', 
             drawerInactiveBackgroundColor: '#ADD4D0', drawerStyle: { backgroundColor: '#ADD4D0' }}}   >
@@ -68,7 +57,7 @@ const Home = (props) => {
                         backgroundColor: '#C1E7E3',
                     },
                     headerTitleStyle: {
-                        fontFamily: 'AveriaLibre-Bold',
+                        fontFamily: 'AveriaLibre-Regular',
                         fontSize: 26,
                         color: '#419ED7',
                     },
@@ -79,8 +68,9 @@ const Home = (props) => {
                     ),
                     drawerLabelStyle: {
                         fontFamily: 'AveriaLibre-Regular',
-                        fontSize: 18,
+                        fontSize: 22,
                         marginTop: 30,
+                        marginLeft: -20
                     }
                 }}
             />
@@ -91,7 +81,7 @@ const Home = (props) => {
                         backgroundColor: '#C1E7E3',
                     },
                     headerTitleStyle: {
-                        fontFamily: 'AveriaLibre-Bold',
+                        fontFamily: 'AveriaLibre-Regular',
                         fontSize: 26,
                         color: '#419ED7',
                     },
@@ -102,11 +92,43 @@ const Home = (props) => {
                     ),
                     drawerLabelStyle: {
                         fontFamily: 'AveriaLibre-Regular',
-                        fontSize: 18
+                        fontSize: 22,
+                        marginLeft: -20
                     },
                 }}
             />
-            
+            <Drawer.Screen name="EditVaccine" component={EditVaccine}
+                options={{
+                    drawerItemStyle: {
+                        display: 'none'
+                    },
+                    title: "Minhas Vacinas",
+                    headerStyle: {
+                        backgroundColor: '#C1E7E3',
+                    },
+                    headerTitleStyle: {
+                        fontFamily: 'AveriaLibre-Regular',
+                        fontSize: 26,
+                        color: '#419ED7',
+                    },
+                }}
+            />
+            <Drawer.Screen name="NewVaccine" component={NewVaccine}
+                options={{
+                    drawerItemStyle: {
+                        display: 'none'
+                    },
+                    title: "Minhas Vacinas",
+                    headerStyle: {
+                        backgroundColor: '#C1E7E3',
+                    },
+                    headerTitleStyle: {
+                        fontFamily: 'AveriaLibre-Regular',
+                        fontSize: 26,
+                        color: '#419ED7',
+                    },
+                }}
+            />
             
             
         </Drawer.Navigator>

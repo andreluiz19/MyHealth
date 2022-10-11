@@ -9,12 +9,12 @@ import {
 
 const MyButtons = (props) =>{
     
-    const {label, onPress, style} = props;
+    const {label, onPress, style, styleText} = props;
 
     return(
         <View>
             <TouchableOpacity style={style} onPress={onPress}>
-                <Text style={styles.texto}>{label}</Text>
+                <Text style={[styles.texto, styleText]}>{label}</Text>
             </TouchableOpacity>
         </View>
     );

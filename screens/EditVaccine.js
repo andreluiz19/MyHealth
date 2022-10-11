@@ -3,13 +3,15 @@ import {
     Text,
     View,
     StyleSheet,
-    Dimensions
+    Dimensions,
+    Image
 } from 'react-native'
-import { TextInput } from 'react-native-gesture-handler'
 
 import IconCalendar from '../components/IconCalendar'
 import MyInputs from '../components/MyInputs'
 import RadioButton from '../components/RadioButton'
+import MyButtons from '../components/MyButtons'
+import IconTrash from '../components/IconTrash'
 
 const EditVaccine = () => {
     return(
@@ -36,7 +38,40 @@ const EditVaccine = () => {
                 <RadioButton style={styles.radio} styleText={styles.styleText} label="Dose única" />
             </View>
             
+            <View style={styles.comprovanteContainer}>
+                <Text style={styles.comprovanteText}>Comprovante</Text>
+                <MyButtons label="Selecionar imagem..." style={styles.buttonComprovante} styleText={styles.buttonComprovanteText} />
+            </View>
+
+            <View style={styles.containerImage}>
+                <Image style={styles.image} source={require('../images/comprovanteVacina.png')} />
+            </View>
+
+            <IconCalendar style={styles.icon2} />
+            
+            <View style={styles.inputDataProx}>
+                <MyInputs styleInput={styles.styleInput} styleText={styles.dataProx} label="Próxima de vacinação" />
+            </View>
+
+            <View style={styles.buttonSalvarContainer}>
+                <MyButtons label="Salvar alterções" style={styles.buttonSalvar} styleText={styles.buttonText} />
+            </View>
+            
+            <IconTrash style={styles.iconTrash} />
+
+            <View style={styles.buttonExcluirContainer}>
+                <MyButtons label="Excluir" style={styles.buttonExcluir} styleText={[styles.buttonText, {marginLeft: 30}]} />
+            </View>
+
+
         </View>
+
+        /*
+
+
+        borderColor: 'black',
+        borderWidth: 1,
+        */
     )
 }
 
@@ -44,6 +79,77 @@ const styles = StyleSheet.create({
     container: {
         height: Dimensions.get('window').height,
         backgroundColor: '#ADD4D0',
+    },
+    buttonSalvar: {
+        backgroundColor: '#37BD6D',
+        width: 180,
+        padding: 5,
+        elevation: 20
+    },
+    buttonText: {
+        fontSize: 20,
+    },
+    buttonSalvarContainer: {
+        marginLeft: 115,
+        marginTop: 30,
+        width: 180,
+    },
+    buttonExcluir: {
+        backgroundColor: '#FD7979',
+        width: 130,
+        marginLeft: 140,
+        padding: 5,
+        elevation: 20
+    },
+    buttonExcluirContainer: {
+        marginTop: Dimensions.get('window').height - 600,
+        width: 130
+    },
+    iconTrash: {
+        marginTop: 70,
+        position: 'absolute',
+        zIndex: 1,
+        marginLeft: 140,
+    },
+    containerImage: {
+        width: 220,
+        marginLeft: 163,
+        marginTop: 10,
+    },
+    dataProx: {
+        fontSize: 16,
+        fontFamily: 'AveriaLibre-Regular',
+    },
+    inputDataProx: {
+        marginLeft: 127,
+        width: '45%',
+    },
+    image: {
+        width: 220,
+        height: 100,
+    },
+    buttonComprovante: {
+        width: 160,
+        height: 25,
+        marginLeft: 5,
+        backgroundColor: '#419ED7',
+        elevation: 20
+    },
+    comprovanteContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: 56,
+        marginTop: 20
+    },
+    comprovanteText: {
+        fontSize: 17,
+        fontFamily: 'AveriaLibre-Regular',
+        color: 'white',
+    },
+    buttonComprovanteText: {
+        fontSize: 15,
+        height: 25,
+        marginTop: 3
     },
     styleInput: {
         height: 30,
@@ -89,13 +195,20 @@ const styles = StyleSheet.create({
         zIndex: 1,
         marginLeft: 284,
     },
+    icon2: {
+        marginTop: 16,
+        position: 'absolute',
+        zIndex: 1,
+        marginLeft: 284,
+    },
     vacina: {
         fontSize: 17,
         fontFamily: 'AveriaLibre-Regular',
     },
     inputVacina: {
-        marginLeft: 105,
-        marginTop: -20
+        marginLeft: 110,
+        marginTop: -20,
+        width: 270
     },
 })
 

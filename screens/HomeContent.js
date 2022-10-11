@@ -62,11 +62,9 @@ const HomeContent = (props) => {
                 <IconSearch style={styles.icon}></IconSearch>
                 <MyInputs styleInput={styles.input} placeholder="        PESQUISAR VACINA..." />
             </View>
-
             
             <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} onPress={goToEditVaccine} />} numColumns={2} />
             
-
             <View style={styles.button}>
                 <MyButtons label="Nova vacina" style={styles.buttonVacina} onPress={goToNewVaccine} />
             </View>
@@ -88,7 +86,7 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        marginBottom: 100,
+        height: Dimensions.get('window').height * 0.23,
     },
     input: {
         width: Dimensions.get('window').width * 0.95,

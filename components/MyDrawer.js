@@ -22,7 +22,7 @@ const MyDrawer = (props) => {
                     source={require('../images/logout-green.png')} 
                 />)} 
                 label="Sair" onPress={() => {props.navigation.pop()}}
-                labelStyle={{fontSize: 22, color: '#419ED7', fontFamily: 'AveriaLibre-Regular'}}
+                labelStyle={{fontSize: 22, color: '#419ED7', fontFamily: 'AveriaLibre-Regular', marginLeft: -20}}
             />
         </DrawerContentScrollView>
     )
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     texto: {
         fontSize: 26,
         fontFamily: 'AveriaLibre-Regular',
-        color: '#419ED7'
+        color: '#419ED7',
     },
     line: {
         borderWidth: 1,

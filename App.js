@@ -64,12 +64,12 @@ const App = () => {
         />
         <Stack.Screen name="NewVaccine" component={NewVaccine}
           options={{
-            //headerShown: false
+            headerShown: false
           }}
         />
         <Stack.Screen name="EditVaccine" component={EditVaccine} 
           options={{
-            //headerShown: false
+            headerShown: false
           }}
         />
       </Stack.Navigator>
