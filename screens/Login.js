@@ -56,7 +56,7 @@ const Login = (props) => {
                     <Text style={styles.title}>MyHealth</Text>
                 </View>
 
-                <View>
+                <View style={styles.labelContainer}>
                     <Text style={styles.label}>Controle as suas vacinas e fique seguro</Text>
                 </View>
 
@@ -65,13 +65,13 @@ const Login = (props) => {
                     <MyInputs placeholder="Digite a sua senha..." label="Senha" value={senha} setValue={setSenha} secure={true} />
                 </View>
                 
-                <View>
+                <View style={styles.buttonEntrarContainer}>
                     <MyButtons label="Entrar" style={styles.buttonEntrar} onPress={loginUser} />
                 </View>
-                <View>
+                <View style={styles.buttonCriarContaContainer}>
                     <MyButtons label="Criar minha conta" style={styles.buttonCriarConta} onPress={goToCreateAccount} />
                 </View>
-                <View>
+                <View style={styles.buttonEsqueceuSenhaContainer}>
                     <MyButtons label="Esqueci minha senha" style={styles.buttonEsqueceuSenha} onPress={goToForgotPassword} />
                 </View>
                 
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: 'rgba(128,128,128, 0.9)',
+        backgroundColor: 'rgba(211,211,211, 0.9)',
         height: '100%'
     },
     imagem: {
@@ -109,6 +109,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         alignItems: 'center',
     },
+    labelContainer: {
+        marginTop: 0,
+    },  
     label: {
         fontSize: 34,
         fontFamily: 'AveriaLibre-Regular',
@@ -119,25 +122,22 @@ const styles = StyleSheet.create({
         marginTop: 30,
     },
     inputs: {
-        marginTop: 40,
+        marginTop: Dimensions.get('window').height * 0.05,
         width: '90%'
     },
     buttonEntrar: {
-        marginTop: 60,
         backgroundColor: '#37BD6D',
         width: 160,
         padding: 10,
         elevation: 10
     },
     buttonCriarConta: {
-        marginTop: 60,
         backgroundColor: '#419ED7',
         width: 240,
         padding: 10,
         elevation: 10
     },
     buttonEsqueceuSenha: {
-        marginTop: 60,
         backgroundColor: '#B0CCDE',
         width: 240,
         padding: 4,
@@ -145,7 +145,17 @@ const styles = StyleSheet.create({
     },
     width: {
         width: '80%'
-    }
+    },
+    buttonEntrarContainer: {
+        marginTop: Dimensions.get('window').height * 0.05
+    },
+    buttonCriarContaContainer: {
+        marginTop: Dimensions.get('window').height * 0.1
+    },
+    buttonEsqueceuSenhaContainer: {
+        marginTop: Dimensions.get('window').height * 0.1
+    },
+
 })
 
 export default Login;

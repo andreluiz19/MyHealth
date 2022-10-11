@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Text,
     View,
     StyleSheet,
     Dimensions,
-    Image
+    Image,
+    Modal
 } from 'react-native'
 
 import IconCalendar from '../components/IconCalendar'
@@ -12,8 +13,16 @@ import MyInputs from '../components/MyInputs'
 import RadioButton from '../components/RadioButton'
 import MyButtons from '../components/MyButtons'
 import IconTrash from '../components/IconTrash'
+import MyModal from '../components/MyModal'
 
 const EditVaccine = () => {
+
+    const [visible, setVisible] = useState(false);
+
+    const changeModalVisible = (bool) => {
+        setVisible(bool);
+    }
+
     return(
         <View style={styles.container}>
 
@@ -60,7 +69,15 @@ const EditVaccine = () => {
             <IconTrash style={styles.iconTrash} />
 
             <View style={styles.buttonExcluirContainer}>
-                <MyButtons label="Excluir" style={styles.buttonExcluir} styleText={[styles.buttonText, {marginLeft: 30}]} />
+                <MyButtons label="Excluir" style={styles.buttonExcluir} styleText={[styles.buttonText, {marginLeft: 30}]} onPress={() => changeModalVisible(true)} />
+                <Modal
+                    transparent={true}
+                    animationType='fade'
+                    visible={visible}
+                    onRequestClose={() => changeModalVisible(false)}
+                >
+                    <MyModal changeModalVisible={changeModalVisible}/>
+                </Modal>
             </View>
 
 
@@ -106,7 +123,7 @@ const styles = StyleSheet.create({
         width: 130
     },
     iconTrash: {
-        marginTop: 70,
+        marginTop: Dimensions.get('window').height - 613,
         position: 'absolute',
         zIndex: 1,
         marginLeft: 140,

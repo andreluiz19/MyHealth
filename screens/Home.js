@@ -49,7 +49,7 @@ const Home = (props) => {
 
     return(
         <Drawer.Navigator drawerContent={(props) => <MyDrawer {...props} />} screenOptions={{drawerActiveTintColor: '#419ED7', drawerInactiveTintColor: '#419ED7', drawerActiveBackgroundColor: '#ADD4D0', 
-            drawerInactiveBackgroundColor: '#ADD4D0', drawerStyle: { backgroundColor: '#ADD4D0' }}}   >
+            drawerInactiveBackgroundColor: '#ADD4D0', headerTintColor: 'gray', drawerStyle: { backgroundColor: '#ADD4D0' }}}   >
             <Drawer.Screen name="HomeContent" component={HomeContent} 
                 options={{
                     title: "Minhas vacinas",
@@ -95,6 +95,7 @@ const Home = (props) => {
                         fontSize: 22,
                         marginLeft: -20
                     },
+                    
                 }}
             />
             <Drawer.Screen name="EditVaccine" component={EditVaccine}
