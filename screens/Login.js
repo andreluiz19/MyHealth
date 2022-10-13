@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: 'rgba(211,211,211, 0.9)',
+        backgroundColor: 'rgba(212,212,212, 0.9)',
         height: '100%'
     },
     imagem: {

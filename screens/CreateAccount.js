@@ -8,11 +8,12 @@ import {
 
 import MyInputs from '../components/MyInputs';
 import MyButtons from '../components/MyButtons';
-import RadioButton from '../components/RadioButton';
+import MyRadioButton from '../components/MyRadioButton';
 import IconCalendar from '../components/IconCalendar';
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const CreateAccount = (props) => {
 
@@ -23,6 +24,7 @@ const CreateAccount = (props) => {
     const [dataNasc, setDataNasc] = useState()
     const [sexoM, setSexoM] = useState('Masculino')
     const [sexoF, setSexoF] = useState('Feminino')
+    const [sexo, setSexo] = useState('')
 
     const newUser = () => {
         if(senha == repetirSenha){
@@ -40,10 +42,6 @@ const CreateAccount = (props) => {
             console.log('As senhas não conferem!')
         }
     }
-    
-    const onChange = () => {
-
-    }
 
     return(
 
@@ -55,8 +53,8 @@ const CreateAccount = (props) => {
 
             <View style={styles.radioContainer}>
                 <Text style={styles.label}>Sexo</Text>
-                <RadioButton label="Masculino" value={sexoM} setValue={setSexoM} />
-                <RadioButton label="Feminino" value={sexoF} setValue={setSexoF} />
+                <MyRadioButton label="Masculino" value={sexoM} setValue={setSexoM} />
+                <MyRadioButton label="Feminino" value={sexoF} setValue={setSexoF} />
             </View>
 
             <IconCalendar style={styles.icon} />
@@ -84,7 +82,7 @@ const styles = StyleSheet.create({
         paddingTop: 50
     },
     buttonEntrar: {
-        marginTop: 130,
+        marginTop: 115,
         backgroundColor: '#37BD6D',
         width: 160,
         padding: 10,
@@ -116,7 +114,7 @@ const styles = StyleSheet.create({
     icon: {
         position: 'absolute',
         zIndex: 1,
-    }
+    },
 })
 
 export default CreateAccount

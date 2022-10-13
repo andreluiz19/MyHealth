@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     Text,
@@ -11,6 +11,7 @@ const MyButtons = (props) =>{
     
     const {label, onPress, style, styleText} = props;
 
+    
     return(
         <View>
             <TouchableOpacity style={style} onPress={onPress}>
@@ -18,6 +19,7 @@ const MyButtons = (props) =>{
             </TouchableOpacity>
         </View>
     );
+    
 }
 
 const styles = StyleSheet.create({

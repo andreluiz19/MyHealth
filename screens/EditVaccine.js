@@ -10,20 +10,21 @@ import {
 
 import IconCalendar from '../components/IconCalendar'
 import MyInputs from '../components/MyInputs'
-import RadioButton from '../components/RadioButton'
+import MyRadioButton from '../components/MyRadioButton'
 import MyButtons from '../components/MyButtons'
 import IconTrash from '../components/IconTrash'
 import MyModal from '../components/MyModal'
+import { Button } from 'react-native-paper'
 
-const EditVaccine = () => {
+const EditVaccine = (props) => {
 
     const [visible, setVisible] = useState(false);
 
     const changeModalVisible = (bool) => {
         setVisible(bool);
     }
-
     return(
+        
         <View style={styles.container}>
 
             <IconCalendar style={styles.icon} />
@@ -38,13 +39,13 @@ const EditVaccine = () => {
 
             <View style={styles.radioContainer}>
                 <Text style={styles.label}>Dose</Text>
-                <RadioButton style={styles.radio} styleText={styles.styleText} label="1a. dose"/>
-                <RadioButton style={styles.radio} styleText={styles.styleText} label="2a. dose"/>
-                <RadioButton style={styles.radio} styleText={styles.styleText} label="3a. dose"/>
+                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="1a. dose"/>
+                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="2a. dose"/>
+                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="3a. dose"/>
             </View>
 
             <View style={styles.radioContainer2}>
-                <RadioButton style={styles.radio} styleText={styles.styleText} label="Dose única" />
+                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="Dose única" />
             </View>
             
             <View style={styles.comprovanteContainer}>
@@ -72,7 +73,7 @@ const EditVaccine = () => {
                 <MyButtons label="Excluir" style={styles.buttonExcluir} styleText={[styles.buttonText, {marginLeft: 30}]} onPress={() => changeModalVisible(true)} />
                 <Modal
                     transparent={true}
-                    animationType='fade'
+                    animationType='fade' //Modo em que o modal irá aparecer
                     visible={visible}
                     onRequestClose={() => changeModalVisible(false)}
                 >
@@ -80,15 +81,8 @@ const EditVaccine = () => {
                 </Modal>
             </View>
 
-
+            <Button onPress={() => console.log(props.route.params)}>Teste</Button>
         </View>
-
-        /*
-
-
-        borderColor: 'black',
-        borderWidth: 1,
-        */
     )
 }
 
@@ -119,11 +113,11 @@ const styles = StyleSheet.create({
         elevation: 20
     },
     buttonExcluirContainer: {
-        marginTop: Dimensions.get('window').height - 600,
+        marginTop: Dimensions.get('window').height - 610,
         width: 130
     },
     iconTrash: {
-        marginTop: Dimensions.get('window').height - 613,
+        marginTop: Dimensions.get('window').height - 623,
         position: 'absolute',
         zIndex: 1,
         marginLeft: 140,
@@ -156,7 +150,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginLeft: 56,
-        marginTop: 20
+        marginTop: 10
     },
     comprovanteText: {
         fontSize: 17,
@@ -176,11 +170,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        marginRight: 25
+        marginRight: 12,
+        marginTop: -10
     },
     styleText: {
-        fontSize: 16,
-        marginLeft: 0
+        fontSize: 14,
+        marginLeft: -5
     },
     radioContainer2: {
         marginLeft: 155

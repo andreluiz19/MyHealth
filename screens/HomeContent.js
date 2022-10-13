@@ -51,7 +51,7 @@ const HomeContent = (props) => {
     }
 
     const goToEditVaccine = () => {
-        props.navigation.navigate('EditVaccine')
+        props.navigation.navigate('EditVaccine', {data: listaVacinas})
     }
 
     return(
@@ -65,7 +65,7 @@ const HomeContent = (props) => {
             <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} onPress={goToEditVaccine} />} numColumns={2} />
             
             <View style={styles.button}>
-                <MyButtons label="Nova vacina" style={styles.buttonVacina} onPress={goToNewVaccine} />
+                <MyButtons label="Nova vacina" style={styles.buttonVacina} onPress={goToNewVaccine} data={listaVacinas} />
             </View>
         </View>
         

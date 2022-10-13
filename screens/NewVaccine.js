@@ -9,7 +9,7 @@ import {
 
 import IconCalendar from '../components/IconCalendar'
 import MyInputs from '../components/MyInputs'
-import RadioButton from '../components/RadioButton'
+import MyRadioButton from '../components/MyRadioButton'
 import MyButtons from '../components/MyButtons'
 
 const NewVaccine = () => {
@@ -28,13 +28,13 @@ const NewVaccine = () => {
 
             <View style={styles.radioContainer}>
                 <Text style={styles.label}>Dose</Text>
-                <RadioButton style={styles.radio} styleText={styles.styleText} label="1a. dose"/>
-                <RadioButton style={styles.radio} styleText={styles.styleText} label="2a. dose"/>
-                <RadioButton style={styles.radio} styleText={styles.styleText} label="3a. dose"/>
+                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="1a. dose"/>
+                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="2a. dose"/>
+                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="3a. dose"/>
             </View>
 
             <View style={styles.radioContainer2}>
-                <RadioButton style={styles.radio} styleText={styles.styleText} label="Dose única" />
+                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="Dose única" />
             </View>
             
             <View style={styles.comprovanteContainer}>
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginLeft: 56,
-        marginTop: 20
+        marginTop: 10
     },
     comprovanteText: {
         fontSize: 17,
@@ -128,11 +128,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        marginRight: 25
+        marginRight: 12,
+        marginTop: -10
     },
     styleText: {
-        fontSize: 16,
-        marginLeft: 0
+        fontSize: 14,
+        marginLeft: -5
     },
     radioContainer2: {
         marginLeft: 155
