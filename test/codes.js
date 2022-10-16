@@ -34,4 +34,6 @@
 borderColor: 'black',
 borderWidth: 1,
 
+<Button title='teste' onPress={() => console.log(listaVacinas)}>Teste</Button>
+
 */

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
     Text,
     View,
@@ -12,18 +12,38 @@ import MyInputs from '../components/MyInputs'
 import MyRadioButton from '../components/MyRadioButton'
 import MyButtons from '../components/MyButtons'
 
-const NewVaccine = () => {
+const NewVaccine = (props) => {
+
+    const {item} = props.route.params;
+
+    const [retorno, setRetorno] = useState();
+    const [vacina, setVacina] = useState(item.vacina);
+    const [data, setData] = useState(item.data);
+    const [dose, setDose] = useState(item.dose);
+    const [proximaDose, setProximaDose] = useState(item.proximaDose);
+
+    const teste = {
+        vacina: 'TEste',
+        data: 'Teste',
+        dose: 'Teste',
+        proximaDose: 'TEste'
+    }
+
+    const cadastrar = () => {
+        item.push(teste);
+    }
+
     return(
         <View style={styles.container}>
 
             <IconCalendar style={styles.icon} />
             
             <View style={styles.inputData}>
-                <MyInputs styleInput={styles.styleInput} styleText={styles.data} label="Data de vacinação" />
+                <MyInputs styleInput={styles.styleInput} styleText={styles.data} label="Data de vacinação" value={data} setValue={setData}/>
             </View>
 
             <View style={styles.inputVacina}>
-                <MyInputs styleInput={styles.styleInput} styleText={styles.vacina} label="Vacina" />
+                <MyInputs styleInput={styles.styleInput} styleText={styles.vacina} label="Vacina" value={vacina} setValue={setVacina}/>
             </View>
 
             <View style={styles.radioContainer}>
@@ -49,11 +69,11 @@ const NewVaccine = () => {
             <IconCalendar style={styles.icon2} />
             
             <View style={styles.inputDataProx}>
-                <MyInputs styleInput={styles.styleInput} styleText={styles.dataProx} label="Próxima de vacinação" />
+                <MyInputs styleInput={styles.styleInput} styleText={styles.dataProx} label="Próxima de vacinação" value={proximaDose} setValue={setProximaDose}/>
             </View>
 
             <View style={styles.buttonCadastrarContainer}>
-                <MyButtons label="Cadastrar" style={styles.buttonCadastrar} styleText={styles.buttonText} />
+                <MyButtons label="Cadastrar" style={styles.buttonCadastrar} styleText={styles.buttonText} onPress={cadastrar}/>
             </View>
 
         </View>

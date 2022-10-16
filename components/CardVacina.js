@@ -10,8 +10,10 @@ import {
 
 const CardVacina = (props) => {
 
-    const {item} = props.item
-    const {onPress} = props
+    const {item} = props.item;
+    const {onPress} = props;
+    //console.log(item.id)
+
     return(
         
         <TouchableOpacity onPress={onPress}>

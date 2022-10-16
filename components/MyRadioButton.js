@@ -10,7 +10,7 @@ const MyRadioButton = (props) => {
 
     const {label, value, setValue, style, styleText} = props
     
-    const [checked, setChecked] = useState('');
+    const [checked, setChecked] = useState();
 
     return(
 

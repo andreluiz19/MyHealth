@@ -18,7 +18,9 @@ const MyInputs = (props) => {
                         style={[styles.input, styleInput]}
                         value={value} 
                         onChangeText={setValue}
-                        secureTextEntry={secure}/>
+                        secureTextEntry={secure}
+            />
+            
         </View>
     );
 }

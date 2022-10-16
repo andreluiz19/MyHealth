@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Text,
     View,
@@ -20,9 +20,24 @@ const EditVaccine = (props) => {
 
     const [visible, setVisible] = useState(false);
 
+    const teste = () => {
+        let vacina = item.filter((vac) =>{
+            return vac.id == 1
+        })
+        return vacina;
+    }
+
+    const {item} = props.route.params;
+    const [id, setId] = useState(item.id);
+    const [vacina, setVacina] = useState(item.vacina);
+    const [data, setData] = useState(item.data);
+    const [dose, setDose] = useState(item.dose);
+    const [proximaDose, setProximaDose] = useState(item.proximaDose);
+    
     const changeModalVisible = (bool) => {
         setVisible(bool);
     }
+
     return(
         
         <View style={styles.container}>
@@ -80,10 +95,9 @@ const EditVaccine = (props) => {
                     <MyModal changeModalVisible={changeModalVisible}/>
                 </Modal>
             </View>
-
-            <Button onPress={() => console.log(props.route.params)}>Teste</Button>
+            <Button onPress={() => console.log(teste())}>Teste</Button>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
