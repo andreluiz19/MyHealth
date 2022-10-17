@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react'
+import { onLog } from 'firebase/app';
+import React, {useState, useEffect} from 'react'
 
 import {
     View,
@@ -6,7 +7,6 @@ import {
     StyleSheet,
     Dimensions,
     ScrollView,
-    Button
 } from 'react-native'
 
 import CardVacina from '../components/CardVacina';
@@ -18,10 +18,10 @@ const listaVacinas = [
     {
         id: 1,
         vacina: 'BCG',
-        data: '11-06-2022',
+        data: '11/06/2022',
         dose: 'Dose única',
         urlImage: require('../images/comprovanteVacina.png'),
-        proximaDose: 'Não há próxima dose'
+        proximaDose: ''
     },
     {
         id: 2,
@@ -29,7 +29,7 @@ const listaVacinas = [
         data: '11/10/2022',
         dose: '1a. dose',
         urlImage: require('../images/comprovanteVacina.png'),
-        proximaDose: 'Próxima dose em: 11/10/2023'
+        proximaDose: '11/10/2023'
     },
     {
         id: 3,
@@ -37,7 +37,7 @@ const listaVacinas = [
         data: '11/08/2022',
         dose: '1a. dose',
         urlImage: require('../images/comprovanteVacina.png'),
-        proximaDose: 'Próxima dose em: 11/10/2022'
+        proximaDose: '11/10/2022'
     },
     {
         id: 4,
@@ -45,53 +45,72 @@ const listaVacinas = [
         data: '11/08/2022',
         dose: '1a. dose',
         urlImage: require('../images/comprovanteVacina.png'),
-        proximaDose: 'Próxima dose em: 11/10/2022'
+        proximaDose: '11/10/2022'
     }
   ]
 
 
 const HomeContent = (props) => {
 
+    const [isRefresh, isSetRefresh] = useState(false)
+
     const goToNewVaccine = () => {
-        props.navigation.navigate('NewVaccine', {item: listaVacinas})
+        isSetRefresh(!isRefresh)
+        props.navigation.navigate('NewVaccine', {item: listaVacinas});
     }
-
+    
     const goToEditVaccine = () => {
-        props.navigation.navigate('EditVaccine', {item: listaVacinas})
+        isSetRefresh(!false)
+        props.navigation.navigate('EditVaccine', {item: listaVacinas});
     }
 
-    const teste = () => {
-        let vacina = listaVacinas.filter((vac) =>{
-            return vac.id == 1
-        })
-        return vacina
-    }
-    /*
     useEffect(() => {
-        console.log("useEffect")
-    }, [listaVacinas])
-    */
+        if(props.route.params?.item && props.route.params?.screen == 1){
+            isSetRefresh(!isRefresh)
+            console.log('Vim da tela de criar nova vacina!')
+            const vac = props.route.params.item;
+            listaVacinas.push(vac);
+        }
+        if(props.route.params?.item && props.route.params?.screen == 2){
+            isSetRefresh(!isRefresh)
+            console.log('Vim da tela de editar vacina!')
+            const vac = props.route.params.item;
+            
+            listaVacinas.forEach( v => {
+                if(v.id == vac.id){
+                    listaVacinas.splice((v.id - 1), 1); //Primeiro parâmetro o index segundo a quantida a remover
+                }
+            })
+        }
+    }, [props.route.params?.item, props.route.params?.screen])
+
+    useEffect(() => {
+
+    }, [isRefresh, listaVacinas])
+
     return(
         
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={styles.inputContainer}>
                 <IconSearch style={styles.icon}></IconSearch>
                 <MyInputs styleInput={styles.input} placeholder="        PESQUISAR VACINA..." />
             </View>
             
-            <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} onPress={goToEditVaccine} />} numColumns={2} />
+            <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} 
+                onPress={() => props.navigation.navigate('EditVaccine', {item: item, lista: [listaVacinas]}) } />} numColumns={2} 
+            />
             
             <View style={styles.button}>
                 <MyButtons label="Nova vacina" style={styles.buttonVacina} onPress={goToNewVaccine} />
-                <Button title='teste' onPress={() => console.log(teste())}>Teste</Button>
             </View>
-        </View>
+        </ScrollView>
         
     );
 }
 
 const styles = StyleSheet.create({
     container: {
+        
         backgroundColor: '#ADD4D0',
         height: Dimensions.get('window').height,
     },
@@ -103,7 +122,7 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        marginBottom: Dimensions.get('window').height * 0.15,
+        paddingVertical: 25
     },
     input: {
         width: Dimensions.get('window').width * 0.95,

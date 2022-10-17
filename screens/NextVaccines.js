@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {
     View,
     StyleSheet,
@@ -10,8 +10,10 @@ import MyButtons from '../components/MyButtons';
 
 const NextVaccines = (props) => {
 
+    //const {item} = props.route.params;
+
     const goToNewVaccine = () => {
-        props.navigation.navigate('NewVaccine')
+        props.navigation.navigate('NewVaccine', {idTela: 2})
     }
 
     return(

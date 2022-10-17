@@ -11,8 +11,15 @@ import MyButtons from '../components/MyButtons';
 
 const MyModal = (props) => {
 
+    const {onPress} = props
+
     closeModal = (bool) => {
         props.changeModalVisible(bool);
+    }
+
+    confirmDelete = () =>{
+        closeModal(false);
+        return true;
     }
 
     return(
@@ -26,7 +33,7 @@ const MyModal = (props) => {
 
                 <View style={styles.buttonView}>
                     <MyButtons label="SIM" styleText={[styles.texto, {color: 'white'}]} style={[styles.button, {backgroundColor: '#FF8383'}]} 
-                        onPress={() => closeModal(false)}
+                        onPress={onPress}
                     />
                     <MyButtons label="CANCELAR" styleText={[styles.texto, {color: 'white'}]} style={[styles.button, {backgroundColor: '#3F92C5'}]} 
                         onPress={() => closeModal(false)}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { RadioButton } from 'react-native-paper';
 import {
     View,
@@ -8,7 +8,7 @@ import {
 
 const MyRadioButton = (props) => {
 
-    const {label, value, setValue, style, styleText} = props
+    const {label, value, setValue, style, styleText, whichSelected} = props
     
     const [checked, setChecked] = useState();
 

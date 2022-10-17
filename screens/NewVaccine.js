@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Text,
     View,
@@ -14,71 +14,128 @@ import MyButtons from '../components/MyButtons'
 
 const NewVaccine = (props) => {
 
-    const {item} = props.route.params;
+    if(props.route.params.idTela === undefined){
+        
+        const resetFields = () => {
+            setData('')
+            setVacina('')
+            setDose('')
+            setProximaDose('')
+        }
 
-    const [retorno, setRetorno] = useState();
-    const [vacina, setVacina] = useState(item.vacina);
-    const [data, setData] = useState(item.data);
-    const [dose, setDose] = useState(item.dose);
-    const [proximaDose, setProximaDose] = useState(item.proximaDose);
+        const {item} = props.route.params;
+        const [vacina, setVacina] = useState(item.vacina);
+        const [data, setData] = useState(item.data);
+        const [dose, setDose] = useState(item.dose);
+        const [proximaDose, setProximaDose] = useState(item.proximaDose);
 
-    const teste = {
-        vacina: 'TEste',
-        data: 'Teste',
-        dose: 'Teste',
-        proximaDose: 'TEste'
+        const novaVacina = () => {
+            const vac = {
+                id: item.length + 1,
+                vacina: vacina,
+                data: data,
+                dose: 'Dose única',
+                urlImage: require('../images/comprovanteVacina.png'),
+                proximaDose: proximaDose
+            }
+            resetFields();
+            props.navigation.navigate('HomeContent', {item: vac, screen: 1});
+        }
+
+        return(
+            <View style={styles.container}>
+
+                <IconCalendar style={styles.icon} />
+                
+                <View style={styles.inputData}>
+                    <MyInputs styleInput={styles.styleInput} styleText={styles.data} label="Data de vacinação" value={data} setValue={setData} />
+                </View>
+
+                <View style={styles.inputVacina}>
+                    <MyInputs styleInput={styles.styleInput} styleText={styles.vacina} label="Vacina" value={vacina} setValue={setVacina} />
+                </View>
+
+                <View style={styles.radioContainer}>
+                    <Text style={styles.label}>Dose</Text>
+                    <MyRadioButton style={styles.radio} styleText={styles.styleText} label="1a. dose"/>
+                    <MyRadioButton style={styles.radio} styleText={styles.styleText} label="2a. dose"/>
+                    <MyRadioButton style={styles.radio} styleText={styles.styleText} label="3a. dose"/>
+                </View>
+
+                <View style={styles.radioContainer2}>
+                    <MyRadioButton style={styles.radio} styleText={styles.styleText} label="Dose única" />
+                </View>
+                
+                <View style={styles.comprovanteContainer}>
+                    <Text style={styles.comprovanteText}>Comprovante</Text>
+                    <MyButtons label="Selecionar imagem..." style={styles.buttonComprovante} styleText={styles.buttonComprovanteText} />
+                </View>
+
+                <View style={styles.containerImage}>
+                    <Image style={styles.image} source={require('../images/comprovanteVacina.png')} />
+                </View>
+
+                <IconCalendar style={styles.icon2} />
+                
+                <View style={styles.inputDataProx}>
+                    <MyInputs styleInput={styles.styleInput} styleText={styles.dataProx} label="Próxima de vacinação" value={proximaDose} setValue={setProximaDose} />
+                </View>
+
+                <View style={styles.buttonCadastrarContainer}>
+                    <MyButtons label="Cadastrar" style={styles.buttonCadastrar} styleText={styles.buttonText} onPress={novaVacina}/>
+                </View>
+
+            </View>
+            
+        )
+    }else{
+        return(
+            <View style={styles.container}>
+
+                <IconCalendar style={styles.icon} />
+                
+                <View style={styles.inputData}>
+                    <MyInputs styleInput={styles.styleInput} styleText={styles.data} label="Data de vacinação" />
+                </View>
+
+                <View style={styles.inputVacina}>
+                    <MyInputs styleInput={styles.styleInput} styleText={styles.vacina} label="Vacina" />
+                </View>
+
+                <View style={styles.radioContainer}>
+                    <Text style={styles.label}>Dose</Text>
+                    <MyRadioButton style={styles.radio} styleText={styles.styleText} label="1a. dose"/>
+                    <MyRadioButton style={styles.radio} styleText={styles.styleText} label="2a. dose"/>
+                    <MyRadioButton style={styles.radio} styleText={styles.styleText} label="3a. dose"/>
+                </View>
+
+                <View style={styles.radioContainer2}>
+                    <MyRadioButton style={styles.radio} styleText={styles.styleText} label="Dose única" />
+                </View>
+                
+                <View style={styles.comprovanteContainer}>
+                    <Text style={styles.comprovanteText}>Comprovante</Text>
+                    <MyButtons label="Selecionar imagem..." style={styles.buttonComprovante} styleText={styles.buttonComprovanteText} />
+                </View>
+
+                <View style={styles.containerImage}>
+                    <Image style={styles.image} source={require('../images/comprovanteVacina.png')} />
+                </View>
+
+                <IconCalendar style={styles.icon2} />
+                
+                <View style={styles.inputDataProx}>
+                    <MyInputs styleInput={styles.styleInput} styleText={styles.dataProx} label="Próxima de vacinação" />
+                </View>
+
+                <View style={styles.buttonCadastrarContainer}>
+                    <MyButtons label="Cadastrar" style={styles.buttonCadastrar} styleText={styles.buttonText} />
+                </View>
+
+            </View>
+            
+        )
     }
-
-    const cadastrar = () => {
-        item.push(teste);
-    }
-
-    return(
-        <View style={styles.container}>
-
-            <IconCalendar style={styles.icon} />
-            
-            <View style={styles.inputData}>
-                <MyInputs styleInput={styles.styleInput} styleText={styles.data} label="Data de vacinação" value={data} setValue={setData}/>
-            </View>
-
-            <View style={styles.inputVacina}>
-                <MyInputs styleInput={styles.styleInput} styleText={styles.vacina} label="Vacina" value={vacina} setValue={setVacina}/>
-            </View>
-
-            <View style={styles.radioContainer}>
-                <Text style={styles.label}>Dose</Text>
-                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="1a. dose"/>
-                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="2a. dose"/>
-                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="3a. dose"/>
-            </View>
-
-            <View style={styles.radioContainer2}>
-                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="Dose única" />
-            </View>
-            
-            <View style={styles.comprovanteContainer}>
-                <Text style={styles.comprovanteText}>Comprovante</Text>
-                <MyButtons label="Selecionar imagem..." style={styles.buttonComprovante} styleText={styles.buttonComprovanteText} />
-            </View>
-
-            <View style={styles.containerImage}>
-                <Image style={styles.image} source={require('../images/comprovanteVacina.png')} />
-            </View>
-
-            <IconCalendar style={styles.icon2} />
-            
-            <View style={styles.inputDataProx}>
-                <MyInputs styleInput={styles.styleInput} styleText={styles.dataProx} label="Próxima de vacinação" value={proximaDose} setValue={setProximaDose}/>
-            </View>
-
-            <View style={styles.buttonCadastrarContainer}>
-                <MyButtons label="Cadastrar" style={styles.buttonCadastrar} styleText={styles.buttonText} onPress={cadastrar}/>
-            </View>
-
-        </View>
-
-    )
 }
 
 const styles = StyleSheet.create({

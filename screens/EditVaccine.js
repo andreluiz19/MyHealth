@@ -14,28 +14,34 @@ import MyRadioButton from '../components/MyRadioButton'
 import MyButtons from '../components/MyButtons'
 import IconTrash from '../components/IconTrash'
 import MyModal from '../components/MyModal'
-import { Button } from 'react-native-paper'
 
 const EditVaccine = (props) => {
 
-    const [visible, setVisible] = useState(false);
-
-    const teste = () => {
-        let vacina = item.filter((vac) =>{
-            return vac.id == 1
-        })
-        return vacina;
-    }
-
-    const {item} = props.route.params;
+    const {item} = props.route.params.item;
+    const {lista} = props.route.params;
     const [id, setId] = useState(item.id);
     const [vacina, setVacina] = useState(item.vacina);
     const [data, setData] = useState(item.data);
     const [dose, setDose] = useState(item.dose);
     const [proximaDose, setProximaDose] = useState(item.proximaDose);
-    
+
+    const [visible, setVisible] = useState(false);
+
     const changeModalVisible = (bool) => {
         setVisible(bool);
+    }
+    const confirmDelete = (bool) => {
+        if(bool){
+            const vac = item;
+            setVisible(false);
+            props.navigation.navigate('HomeContent', {item: vac, screen: 2})
+        }else{
+            
+        }
+    }
+
+    const showVaccine = () => {
+        console.log(item);
     }
 
     return(
@@ -45,18 +51,18 @@ const EditVaccine = (props) => {
             <IconCalendar style={styles.icon} />
             
             <View style={styles.inputData}>
-                <MyInputs styleInput={styles.styleInput} styleText={styles.data} label="Data de vacinação" />
+                <MyInputs styleInput={styles.styleInput} styleText={styles.data} label="Data de vacinação" value={item.data}/>
             </View>
 
             <View style={styles.inputVacina}>
-                <MyInputs styleInput={styles.styleInput} styleText={styles.vacina} label="Vacina" />
+                <MyInputs styleInput={styles.styleInput} styleText={styles.vacina} label="Vacina" value={item.vacina}/>
             </View>
 
             <View style={styles.radioContainer}>
                 <Text style={styles.label}>Dose</Text>
-                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="1a. dose"/>
-                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="2a. dose"/>
-                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="3a. dose"/>
+                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="1a. dose" whichSelected={'first'}/>
+                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="2a. dose" />
+                <MyRadioButton style={styles.radio} styleText={styles.styleText} label="3a. dose" />
             </View>
 
             <View style={styles.radioContainer2}>
@@ -75,11 +81,11 @@ const EditVaccine = (props) => {
             <IconCalendar style={styles.icon2} />
             
             <View style={styles.inputDataProx}>
-                <MyInputs styleInput={styles.styleInput} styleText={styles.dataProx} label="Próxima de vacinação" />
+                <MyInputs styleInput={styles.styleInput} styleText={styles.dataProx} label="Próxima de vacinação" value={item.proximaDose}/>
             </View>
 
             <View style={styles.buttonSalvarContainer}>
-                <MyButtons label="Salvar alterções" style={styles.buttonSalvar} styleText={styles.buttonText} />
+                <MyButtons label="Salvar alterções" style={styles.buttonSalvar} styleText={styles.buttonText} onPress={showVaccine}/>
             </View>
             
             <IconTrash style={styles.iconTrash} />
@@ -92,12 +98,11 @@ const EditVaccine = (props) => {
                     visible={visible}
                     onRequestClose={() => changeModalVisible(false)}
                 >
-                    <MyModal changeModalVisible={changeModalVisible}/>
+                    <MyModal changeModalVisible={changeModalVisible} item={item} onPress={confirmDelete}/>
                 </Modal>
             </View>
-            <Button onPress={() => console.log(teste())}>Teste</Button>
         </View>
-    );
+    ); 
 }
 
 const styles = StyleSheet.create({

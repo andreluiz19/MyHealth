@@ -1,8 +1,10 @@
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
-import {View, Text, StyleSheet } from "react-native";
 
 import {
-    Image
+    Image,
+    View,
+    Text,
+    StyleSheet
 } from 'react-native'
 
 const MyDrawer = (props) => {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     View,
     Image,
@@ -16,22 +16,27 @@ import { auth } from '../config/firebase';
 
 const Login = (props) => {
 
-    const [email, setEmail] = useState()
-    const [senha, setSenha] = useState()
-    
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
+    const [errorAuth, setErrorAuth] = useState()
+
     const loginUser = () => {
         /*
         signInWithEmailAndPassword(auth, email, senha)
         .then( (userCredential) => {
-            console.log("Usuário autenticado com sucesso!")
-            goToHome()
+            console.log("Usuário autenticado com sucesso!");
+            setErrorAuth('');
+            setEmail('');
+            setSenha('');
+            goToHome();
         })
         .catch( (error) => {
-            console.log("Ocorreu um erro ao atuenticar!")
-            console.log("Erro: " + error.message)
+            console.log("Ocorreu um erro ao atuenticar!");
+            console.log("Erro: " + error.message);
+            setErrorAuth('E-mail e/ou senha inválidos.');
         })
         */
-        goToHome()
+       goToHome();
     }
 
     const goToHome = () => {
@@ -63,6 +68,7 @@ const Login = (props) => {
                 <View style={styles.inputs}>
                     <MyInputs placeholder="Digite o seu email..." label="E-mail" value={email} setValue={setEmail} />
                     <MyInputs placeholder="Digite a sua senha..." label="Senha" value={senha} setValue={setSenha} secure={true} />
+                    {errorAuth && <Text style={styles.errorAuth}>{errorAuth}</Text>}
                 </View>
                 
                 <View style={styles.buttonEntrarContainer}>
@@ -153,9 +159,14 @@ const styles = StyleSheet.create({
         marginTop: Dimensions.get('window').height * 0.1
     },
     buttonEsqueceuSenhaContainer: {
-        marginTop: Dimensions.get('window').height * 0.1
+        marginTop: Dimensions.get('window').height * 0.08
     },
-
+    errorAuth: {
+        color: 'red',
+        marginLeft: 75,
+        fontFamily: 'AveriaLibre-Regular',
+        fontSize: 16
+    }
 })
 
 export default Login;

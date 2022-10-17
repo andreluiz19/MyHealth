@@ -13,33 +13,34 @@ import IconCalendar from '../components/IconCalendar';
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase'
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const CreateAccount = (props) => {
 
-    const [email, setEmail] = useState()
-    const [senha, setSenha] = useState()
-    const [repetirSenha, setRepetirSenha] = useState()
-    const [nomeCompleto, setNomeCompleto] = useState()
-    const [dataNasc, setDataNasc] = useState()
-    const [sexoM, setSexoM] = useState('Masculino')
-    const [sexoF, setSexoF] = useState('Feminino')
-    const [sexo, setSexo] = useState('')
+    const [email, setEmail] = useState();
+    const [senha, setSenha] = useState();
+    const [repetirSenha, setRepetirSenha] = useState();
+    const [nomeCompleto, setNomeCompleto] = useState();
+    const [dataNasc, setDataNasc] = useState();
+    const [sexo, setSexo] = useState();
+
+    const [errorPass, setErrorPass] = useState('');
 
     const newUser = () => {
         if(senha == repetirSenha){
             createUserWithEmailAndPassword(auth, email, senha)
             .then( (userCredential) => {
-                console.log("Usuário adicionado com sucesso!")
+                console.log("Usuário cadastrado com sucesso!");
                 //console.log(JSON.stringify(userCredential))
-                props.navigation.pop()
+                setErrorPass('')
+                props.navigation.pop();
             })
             .catch( (error) => {
-                console.log("Ocorreu um erro ao cadastrar usuário!")
-                console.log("Erro: " + error.message)
+                console.log("Ocorreu um erro ao cadastrar usuário!");
+                console.log("Erro: " + error.message);
             })
         }else{
-            console.log('As senhas não conferem!')
+            console.log('As senhas não conferem!');
+            setErrorPass('Senha não confere!');
         }
     }
 
@@ -53,8 +54,8 @@ const CreateAccount = (props) => {
 
             <View style={styles.radioContainer}>
                 <Text style={styles.label}>Sexo</Text>
-                <MyRadioButton label="Masculino" value={sexoM} setValue={setSexoM} />
-                <MyRadioButton label="Feminino" value={sexoF} setValue={setSexoF} />
+                <MyRadioButton label="Masculino" value={sexo} setValue={setSexo} />
+                <MyRadioButton label="Feminino" value={sexo} setValue={setSexo} />
             </View>
 
             <IconCalendar style={styles.icon} />
@@ -64,9 +65,10 @@ const CreateAccount = (props) => {
                 <MyInputs styleText={styles.texto} label="E-mail" value={email} setValue={setEmail} />
                 <MyInputs styleText={styles.texto} label="Senha" value={senha} setValue={setSenha} secure={true} />
                 <MyInputs styleText={styles.texto} label="Repetir senha" value={repetirSenha} setValue={setRepetirSenha} secure={true} />
+                
             </View>
-
             <View style={styles.center}>
+                {errorPass && <Text style={styles.errorPass}>{errorPass}</Text>}
                 <MyButtons label="Cadastrar" style={styles.buttonEntrar} onPress={newUser} />
             </View>
 
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
         fontFamily: 'AveriaLibre-Regular',
     },
     center: {
-        alignItems: 'center'
+        alignItems: 'center',
     },
     input: {
         alignItems: 'flex-end',
@@ -115,6 +117,12 @@ const styles = StyleSheet.create({
         position: 'absolute',
         zIndex: 1,
     },
+    errorPass: {
+        color: 'red',
+        
+        fontFamily: 'AveriaLibre-Regular',
+        fontSize: 16
+    }
 })
 
 export default CreateAccount

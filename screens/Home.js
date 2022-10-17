@@ -12,36 +12,6 @@ import NextVaccines from '../screens/NextVaccines';
 import EditVaccine from '../screens/EditVaccine';
 import NewVaccine from '../screens/NewVaccine';
 
-const listaVacinas = [
-    {
-        vacina: 'BCG',
-        data: '11-06-2022',
-        dose: 'Dose única',
-        urlImage: require('../images/comprovanteVacina.png'),
-        proximaDose: 'Não há próxima dose'
-    },
-    {
-        vacina: 'Febre amarela',
-        data: '11/10/2022',
-        dose: '1a. dose',
-        urlImage: require('../images/comprovanteVacina.png'),
-        proximaDose: 'Próxima dose em: 11/10/2023'
-    },
-    {
-        vacina: 'Hepatite B',
-        data: '11/08/2022',
-        dose: '1a. dose',
-        urlImage: require('../images/comprovanteVacina.png'),
-        proximaDose: 'Próxima dose em: 11/10/2022'
-    },
-    {
-        vacina: 'Poliomelite',
-        data: '11/08/2022',
-        dose: '1a. dose',
-        urlImage: require('../images/comprovanteVacina.png'),
-        proximaDose: 'Próxima dose em: 11/10/2022'
-    }
-  ]
 
 const Drawer = createDrawerNavigator()
 
@@ -95,7 +65,6 @@ const Home = (props) => {
                         fontSize: 22,
                         marginLeft: -20
                     },
-                    
                 }}
             />
             <Drawer.Screen name="EditVaccine" component={EditVaccine}
@@ -103,7 +72,7 @@ const Home = (props) => {
                     drawerItemStyle: {
                         display: 'none'
                     },
-                    title: "Minhas Vacinas",
+                    title: "Minhas vacinas",
                     headerStyle: {
                         backgroundColor: '#C1E7E3',
                     },
@@ -119,7 +88,7 @@ const Home = (props) => {
                     drawerItemStyle: {
                         display: 'none'
                     },
-                    title: "Minhas Vacinas",
+                    title: "Minhas vacinas",
                     headerStyle: {
                         backgroundColor: '#C1E7E3',
                     },
