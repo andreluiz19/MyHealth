@@ -27,8 +27,10 @@ const CardVacina = (props) => {
             
             <View style={styles.card}>
                 <Text style={{fontSize: 22, color: '#3F92C5', fontFamily: 'AveriaLibre-Regular', marginTop: 5}}>{item.vacina}</Text>
-                <Text style={{fontSize: 16, color: 'white', backgroundColor: '#3F92C5', paddingHorizontal: 10, marginTop: 5, fontFamily: 'AveriaLibre-Regular'}}>{item.dose}</Text>
-                <Text style={{fontSize: 14, fontFamily: 'AveriaLibre-Regular', marginVertical: 5}}>{item.data}</Text>
+                <Text style={{fontSize: 16, color: 'white', backgroundColor: '#3F92C5', paddingHorizontal: 10, marginTop: 5, 
+                    fontFamily: 'AveriaLibre-Regular'}}>{item.dose}
+                </Text>
+                <Text style={{fontSize: 14, fontFamily: 'AveriaLibre-Regular', marginVertical: 5, color: 'gray'}}>{item.data}</Text>
                 <Image style={styles.image} source={item.urlImage}></Image>
                 <Text style={{fontSize: 14, color: '#FD7979', fontFamily: 'AveriaLibre-Regular'}}>{proxDose()}{item.proximaDose}</Text>
             </View>

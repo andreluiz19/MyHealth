@@ -21,7 +21,7 @@ const Login = (props) => {
     const [errorAuth, setErrorAuth] = useState()
 
     const loginUser = () => {
-        
+        /*
         signInWithEmailAndPassword(auth, email, senha)
         .then( (userCredential) => {
             console.log("Usuário autenticado com sucesso!");
@@ -35,8 +35,8 @@ const Login = (props) => {
             console.log("Erro: " + error.message);
             setErrorAuth('E-mail e/ou senha inválidos.');
         })
-        
-        //goToHome();
+        */
+        goToHome();
     }
 
     const goToHome = () => {
@@ -70,15 +70,17 @@ const Login = (props) => {
                     <MyInputs placeholder="Digite a sua senha..." label="Senha" value={senha} setValue={setSenha} secure={true} />
                     {errorAuth && <Text style={styles.errorAuth}>{errorAuth}</Text>}
                 </View>
-                
-                <View style={styles.buttonEntrarContainer}>
-                    <MyButtons label="Entrar" style={styles.buttonEntrar} onPress={loginUser} />
-                </View>
-                <View style={styles.buttonCriarContaContainer}>
-                    <MyButtons label="Criar minha conta" style={styles.buttonCriarConta} onPress={goToCreateAccount} />
-                </View>
-                <View style={styles.buttonEsqueceuSenhaContainer}>
-                    <MyButtons label="Esqueci minha senha" style={styles.buttonEsqueceuSenha} onPress={goToForgotPassword} />
+
+                <View style={styles.buttonView}>
+                    <View style={styles.buttonEntrarContainer}>
+                        <MyButtons label="Entrar" style={styles.buttonEntrar} onPress={loginUser} />
+                    </View>
+                    <View style={styles.buttonCriarContaContainer}>
+                        <MyButtons label="Criar minha conta" style={styles.buttonCriarConta} onPress={goToCreateAccount} />
+                    </View>
+                    <View style={styles.buttonEsqueceuSenhaContainer}>
+                        <MyButtons label="Esqueci minha senha" style={styles.buttonEsqueceuSenha} onPress={goToForgotPassword} />
+                    </View>
                 </View>
                 
             </View>
@@ -153,19 +155,25 @@ const styles = StyleSheet.create({
         width: '80%'
     },
     buttonEntrarContainer: {
-        marginTop: Dimensions.get('window').height * 0.05
+        
     },
     buttonCriarContaContainer: {
-        marginTop: Dimensions.get('window').height * 0.1
+        
     },
     buttonEsqueceuSenhaContainer: {
-        marginTop: Dimensions.get('window').height * 0.08
+        
     },
     errorAuth: {
         color: 'red',
         marginLeft: 75,
         fontFamily: 'AveriaLibre-Regular',
         fontSize: 16
+    },
+    buttonView: {
+        alignItems: 'center',
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        height: Dimensions.get('window').height * 0.6
     }
 })
 

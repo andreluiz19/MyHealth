@@ -110,19 +110,24 @@ const HomeContent = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        
+        flexDirection: 'column',
         backgroundColor: '#ADD4D0',
         height: Dimensions.get('window').height,
     },
     buttonVacina: {
         backgroundColor: '#37BD6D',
         width: 160,
-        padding: 10,
+        height: 40,
+        justifyContent: 'center',
+        padding: 0,
         elevation: 10,
     },
     button: {
         alignItems: 'center',
-        paddingVertical: 25
+        paddingVertical: 25,
+        height: Dimensions.get('window').height * 0.3,
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
     },
     input: {
         width: Dimensions.get('window').width * 0.95,
