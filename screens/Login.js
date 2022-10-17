@@ -72,13 +72,13 @@ const Login = (props) => {
                 </View>
 
                 <View style={styles.buttonView}>
-                    <View style={styles.buttonEntrarContainer}>
+                    <View>
                         <MyButtons label="Entrar" style={styles.buttonEntrar} onPress={loginUser} />
                     </View>
-                    <View style={styles.buttonCriarContaContainer}>
+                    <View>
                         <MyButtons label="Criar minha conta" style={styles.buttonCriarConta} onPress={goToCreateAccount} />
                     </View>
-                    <View style={styles.buttonEsqueceuSenhaContainer}>
+                    <View>
                         <MyButtons label="Esqueci minha senha" style={styles.buttonEsqueceuSenha} onPress={goToForgotPassword} />
                     </View>
                 </View>
@@ -154,15 +154,6 @@ const styles = StyleSheet.create({
     width: {
         width: '80%'
     },
-    buttonEntrarContainer: {
-        
-    },
-    buttonCriarContaContainer: {
-        
-    },
-    buttonEsqueceuSenhaContainer: {
-        
-    },
     errorAuth: {
         color: 'red',
         marginLeft: 75,
@@ -173,7 +164,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
-        height: Dimensions.get('window').height * 0.6
+        height: Dimensions.get('window').height * 0.5
     }
 })
 

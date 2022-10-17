@@ -67,15 +67,14 @@ const HomeContent = (props) => {
     useEffect(() => {
         if(props.route.params?.item && props.route.params?.screen == 1){
             isSetRefresh(!isRefresh)
-            console.log('Vim da tela de criar nova vacina!')
+            //console.log('Vim da tela de criar nova vacina!')
             const vac = props.route.params.item;
             listaVacinas.push(vac);
         }
         if(props.route.params?.item && props.route.params?.screen == 2){
             isSetRefresh(!isRefresh)
-            console.log('Vim da tela de editar vacina!')
+            //console.log('Vim da tela de editar vacina!')
             const vac = props.route.params.item;
-            
             listaVacinas.forEach( v => {
                 if(v.id == vac.id){
                     listaVacinas.splice((v.id - 1), 1); //Primeiro parâmetro o index segundo a quantida a remover
@@ -85,7 +84,6 @@ const HomeContent = (props) => {
     }, [props.route.params?.item, props.route.params?.screen])
 
     useEffect(() => {
-
     }, [isRefresh, listaVacinas])
 
     return(
@@ -125,7 +123,7 @@ const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
         paddingVertical: 25,
-        height: Dimensions.get('window').height * 0.3,
+        height: Dimensions.get('window').height * 0.17,
         flexDirection: 'column',
         justifyContent: 'flex-end',
     },
