@@ -18,7 +18,6 @@ import MyModal from '../components/MyModal'
 const EditVaccine = (props) => {
 
     const {item} = props.route.params.item;
-    const {lista} = props.route.params;
     const [id, setId] = useState(item.id);
     const [vacina, setVacina] = useState(item.vacina);
     const [data, setData] = useState(item.data);

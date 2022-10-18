@@ -47,7 +47,7 @@ const listaVacinas = [
         urlImage: require('../images/comprovanteVacina.png'),
         proximaDose: '11/10/2022'
     }
-  ]
+]
 
 
 const HomeContent = (props) => {
@@ -77,7 +77,9 @@ const HomeContent = (props) => {
             const vac = props.route.params.item;
             listaVacinas.forEach( v => {
                 if(v.id == vac.id){
-                    listaVacinas.splice((v.id - 1), 1); //Primeiro parâmetro o index segundo a quantida a remover
+                    //console.log(listaVacinas.indexOf(v));
+                    let index = listaVacinas.indexOf(v)
+                    listaVacinas.splice(index, 1); //Primeiro parâmetro o index segundo a quantida a remover
                 }
             })
         }
@@ -95,7 +97,7 @@ const HomeContent = (props) => {
             </View>
             
             <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} 
-                onPress={() => props.navigation.navigate('EditVaccine', {item: item, lista: [listaVacinas]}) } />} numColumns={2} 
+                onPress={() => props.navigation.navigate('EditVaccine', {item: item}) } />} numColumns={2} 
             />
             
             <View style={styles.button}>
@@ -129,6 +131,7 @@ const styles = StyleSheet.create({
     },
     input: {
         width: Dimensions.get('window').width * 0.95,
+        color: 'gray',
         height: 30,
         padding: 0,
     },
