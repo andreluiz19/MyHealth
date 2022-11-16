@@ -17,42 +17,35 @@ import Radio from '../components/Radio';
 
 const EditCreateVaccine = (props) => {
 
-    const resetFields = () => {
-        setData('')
-        setVacina('')
-        setDose('')
-        setProximaDose('')
-    }
+    const {item} = props.route.params.item;
 
-    if(props.route.params?.idTela){
-        var idTela = props.route.params.idTela;
+    useEffect(() =>{
+        setVacina(item.vacina);
+        setData(item.data);
+        setDose(item.dose);
+        setProximaDose(item.proximaDose);
+    }, [item])
+
+    const idTela = props.route.params.idTela;
+    
+    const [vacina, setVacina] = useState(item.vacina);
+    const [data, setData] = useState(item.data);
+    const [dose, setDose] = useState(item.dose);
+    const [proximaDose, setProximaDose] = useState(item.proximaDose);
+
+    if(dose == '1a. dose'){
+        var radioCheck = 0;
+    }else if(dose == '2a. dose'){
+        var radioCheck = 1;
+    }else if(dose == '3a. dose'){
+        var radioCheck = 2;
+    }else if(dose == 'Dose única'){
+        var radioCheck = 3;
     }else{
-        var idTela = 1;
+        var radioCheck = undefined;
     }
 
-    if(idTela == 1){
-        var {item} = props.route.params.item;
-        var [vacina, setVacina] = useState(item.vacina);
-        var [data, setData] = useState(item.data);
-        var [dose, setDose] = useState(item.dose);
-        var [proximaDose, setProximaDose] = useState(item.proximaDose);
-        if(dose == '1a. dose'){
-            var [selected, setSelected] = useState(0);
-        }else if(dose == '2a. dose'){
-            var [selected, setSelected] = useState(1);
-        }else if(dose == '3a. dose'){
-            var [selected, setSelected] = useState(2);
-        }else{
-            var [selected, setSelected] = useState(3);
-        }
-    }else if(idTela == 2){
-        var [vacina, setVacina] = useState();
-        var [data, setData] = useState();
-        var [dose, setDose] = useState();
-        var [proximaDose, setProximaDose] = useState();
-        var [selected, setSelected] = useState(3);
-    }
-
+    const [selected, setSelected] = useState(radioCheck);  
     const [visible, setVisible] = useState(false);
 
     const changeModalVisible = (bool) => {
@@ -78,7 +71,6 @@ const EditCreateVaccine = (props) => {
             urlImage: require('../images/comprovanteVacina.png'),
             proximaDose: proximaDose
         }
-        resetFields();
         props.navigation.navigate('HomeContent', {item: vac, screen: 1});
     }
 
@@ -130,7 +122,7 @@ const EditCreateVaccine = (props) => {
                 idTela == 1 ?
                     <>
                         <View style={styles.buttonSalvarContainer}>
-                            <MyButtons label="Salvar alterções" style={styles.buttonSalvar} styleText={styles.buttonText} onPress={showVaccine}/>
+                            <MyButtons label="Salvar alterações" style={styles.buttonSalvar} styleText={styles.buttonText} onPress={showVaccine}/>
                         </View>
                     
                         <IconTrash style={styles.iconTrash} />
@@ -156,10 +148,11 @@ const EditCreateVaccine = (props) => {
             }
         </View>
         
-        
-        
-       
-       
+       /*
+      <View>
+        <Text>A</Text>
+      </View>
+            */
     ); 
 }
 
@@ -179,7 +172,7 @@ const styles = StyleSheet.create({
     },
     buttonSalvarContainer: {
         marginLeft: 115,
-        marginTop: 30,
+        marginTop: 50,
         width: 180,
     },
     buttonExcluir: {
@@ -190,11 +183,11 @@ const styles = StyleSheet.create({
         elevation: 20
     },
     buttonExcluirContainer: {
-        marginTop: Dimensions.get('window').height - 610,
+        marginTop: Dimensions.get('window').height - 600,
         width: 130
     },
     iconTrash: {
-        marginTop: Dimensions.get('window').height - 623,
+        marginTop: Dimensions.get('window').height - 613,
         position: 'absolute',
         zIndex: 1,
         marginLeft: 140,
