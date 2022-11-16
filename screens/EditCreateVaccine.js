@@ -69,9 +69,9 @@ const EditCreateVaccine = (props) => {
     }
 
     const novaVacina = () => {
-        const qtd = props.route.params.qtd
+        const idTemp = Math.floor(Math.random() * 100000);
         const vac = {
-            id: qtd + 1,
+            id: idTemp,
             vacina: vacina,
             data: data,
             dose: dose,

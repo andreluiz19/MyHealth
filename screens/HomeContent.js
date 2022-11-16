@@ -55,7 +55,7 @@ const HomeContent = (props) => {
 
     const goToEditCreateVaccine = () => {
         isSetRefresh(!isRefresh)
-        props.navigation.navigate('EditCreateVaccine', {qtd: listaVacinas.length, idTela: 2});
+        props.navigation.navigate('EditCreateVaccine', {idTela: 2});
     }
 
     useEffect(() => {
