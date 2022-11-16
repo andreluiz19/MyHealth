@@ -17,8 +17,6 @@ import Radio from '../components/Radio';
 
 const EditCreateVaccine = (props) => {
 
-    
-
     const resetFields = () => {
         setData('')
         setVacina('')
@@ -26,7 +24,11 @@ const EditCreateVaccine = (props) => {
         setProximaDose('')
     }
 
-    const idTela = props.route.params.idTela;
+    if(props.route.params?.idTela){
+        var idTela = props.route.params.idTela;
+    }else{
+        var idTela = 1;
+    }
 
     if(idTela == 1){
         var {item} = props.route.params.item;

@@ -11,6 +11,7 @@ import HomeContent from '../screens/HomeContent';
 import NextVaccines from '../screens/NextVaccines';
 import EditVaccine from '../screens/EditVaccine';
 import NewVaccine from '../screens/NewVaccine';
+import EditCreateVaccine from '../screens/EditCreateVaccine';
 
 
 const Drawer = createDrawerNavigator()
@@ -99,6 +100,7 @@ const Home = (props) => {
                     },
                 }}
             />
+            
             
             
         </Drawer.Navigator>
