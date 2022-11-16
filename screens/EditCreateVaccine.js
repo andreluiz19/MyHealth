@@ -24,7 +24,22 @@ const EditCreateVaccine = (props) => {
         setData(item.data);
         setDose(item.dose);
         setProximaDose(item.proximaDose);
-    }, [item])
+        setSelected(() => {
+            if(item.dose == '1a. dose'){
+                alert(0)
+                return 0;
+            }else if(item.dose == '2a. dose'){
+                alert(1)
+                return 1;
+            }else if(item.dose == '3a. dose'){
+                alert(2)
+                return 2;
+            }else if(item.dose == 'Dose única'){
+                alert(3)
+                return 3;
+            }
+        });
+    }, [item.id])
 
     const idTela = props.route.params.idTela;
     
@@ -32,20 +47,7 @@ const EditCreateVaccine = (props) => {
     const [data, setData] = useState(item.data);
     const [dose, setDose] = useState(item.dose);
     const [proximaDose, setProximaDose] = useState(item.proximaDose);
-
-    if(dose == '1a. dose'){
-        var radioCheck = 0;
-    }else if(dose == '2a. dose'){
-        var radioCheck = 1;
-    }else if(dose == '3a. dose'){
-        var radioCheck = 2;
-    }else if(dose == 'Dose única'){
-        var radioCheck = 3;
-    }else{
-        var radioCheck = undefined;
-    }
-
-    const [selected, setSelected] = useState(radioCheck);  
+    const [selected, setSelected] = useState();
     const [visible, setVisible] = useState(false);
 
     const changeModalVisible = (bool) => {
