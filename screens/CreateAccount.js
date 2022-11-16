@@ -8,8 +8,8 @@ import {
 
 import MyInputs from '../components/MyInputs';
 import MyButtons from '../components/MyButtons';
-import MyRadioButton from '../components/MyRadioButton';
 import IconCalendar from '../components/IconCalendar';
+import Radio from '../components/Radio';
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase'
@@ -22,6 +22,7 @@ const CreateAccount = (props) => {
     const [nomeCompleto, setNomeCompleto] = useState();
     const [dataNasc, setDataNasc] = useState();
     const [sexo, setSexo] = useState();
+    const [selected, setSelected] = useState(0);
 
     const [errorPass, setErrorPass] = useState('');
 
@@ -54,8 +55,14 @@ const CreateAccount = (props) => {
 
             <View style={styles.radioContainer}>
                 <Text style={styles.label}>Sexo</Text>
-                <MyRadioButton label="Masculino" value={sexo} setValue={setSexo} />
-                <MyRadioButton label="Feminino" value={sexo} setValue={setSexo} />
+                <Radio options={['Masculino', 'Feminino']}
+                    selected={selected} 
+                    horizontal={true} 
+                    onChangeSelect={(opt, i) => {
+                        setSelected(i);
+                        setSexo(opt);
+                    }} 
+                />
             </View>
 
             <IconCalendar style={styles.icon} />

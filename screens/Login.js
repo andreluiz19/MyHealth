@@ -21,7 +21,7 @@ const Login = (props) => {
     const [errorAuth, setErrorAuth] = useState()
 
     const loginUser = () => {
-        
+        /*
         signInWithEmailAndPassword(auth, email, senha)
         .then( (userCredential) => {
             console.log("Usuário autenticado com sucesso!");
@@ -35,8 +35,8 @@ const Login = (props) => {
             console.log("Erro: " + error.message);
             setErrorAuth('E-mail e/ou senha inválidos.');
         })
-        
-        //goToHome();
+        */
+        goToHome();
     }
 
     const goToHome = () => {

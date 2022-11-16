@@ -36,4 +36,20 @@ borderWidth: 1,
 
 <Button title='teste' onPress={() => console.log(listaVacinas)}>Teste</Button>
 
+
+<Text style={styles.label}>Sexo</Text>
+<MyRadioButton label="Masculino" value={sexo} setValue={setSexo} />
+<MyRadioButton label="Feminino" value={sexo} setValue={setSexo} />
+
+<View style={styles.radioContainer}>
+<Text style={styles.label}>Dose</Text>
+<MyRadioButton style={styles.radio} styleText={styles.styleText} label="1a. dose" whichSelected={'first'}/>
+<MyRadioButton style={styles.radio} styleText={styles.styleText} label="2a. dose" />
+<MyRadioButton style={styles.radio} styleText={styles.styleText} label="3a. dose" />
+</View>
+
+<View style={styles.radioContainer2}>
+<MyRadioButton style={styles.radio} styleText={styles.styleText} label="Dose única" />
+</View>
+
 */

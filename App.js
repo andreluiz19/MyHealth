@@ -7,8 +7,7 @@ import Home from './screens/Home'
 import CreateAccount from './screens/CreateAccount'
 import IconHeader from './components/IconHeader';
 import ForgotPassword from './screens/ForgotPassword';
-import NewVaccine from './screens/NewVaccine';
-import EditVaccine from './screens/EditVaccine';
+import EditCreateVaccine from './screens/EditCreateVaccine';
 
 
 const Stack = createNativeStackNavigator()
@@ -62,12 +61,7 @@ const App = () => {
             )
           }}
         />
-        <Stack.Screen name="NewVaccine" component={NewVaccine}
-          options={{
-            headerShown: false
-          }}
-        />
-        <Stack.Screen name="EditVaccine" component={EditVaccine} 
+        <Stack.Screen name="EditCreateVaccine" component={EditCreateVaccine}
           options={{
             headerShown: false
           }}

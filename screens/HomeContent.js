@@ -49,19 +49,13 @@ const listaVacinas = [
     }
 ]
 
-
 const HomeContent = (props) => {
 
     const [isRefresh, isSetRefresh] = useState(false)
 
-    const goToNewVaccine = () => {
+    const goToEditCreateVaccine = () => {
         isSetRefresh(!isRefresh)
-        props.navigation.navigate('NewVaccine', {item: listaVacinas});
-    }
-    
-    const goToEditVaccine = () => {
-        isSetRefresh(!false)
-        props.navigation.navigate('EditVaccine', {item: listaVacinas});
+        props.navigation.navigate('EditCreateVaccine', {qtd: listaVacinas.length, idTela: 2});
     }
 
     useEffect(() => {
@@ -75,6 +69,7 @@ const HomeContent = (props) => {
             isSetRefresh(!isRefresh)
             //console.log('Vim da tela de editar vacina!')
             const vac = props.route.params.item;
+            console.log(vac);
             listaVacinas.forEach( v => {
                 if(v.id == vac.id){
                     //console.log(listaVacinas.indexOf(v));
@@ -97,11 +92,11 @@ const HomeContent = (props) => {
             </View>
             
             <FlatList data={listaVacinas} renderItem={(item) => <CardVacina item={item} 
-                onPress={() => props.navigation.navigate('EditVaccine', {item: item}) } />} numColumns={2} 
+                onPress={() => props.navigation.navigate('EditCreateVaccine', {item: item, idTela: 1},) } />} numColumns={2} 
             />
             
             <View style={styles.button}>
-                <MyButtons label="Nova vacina" style={styles.buttonVacina} onPress={goToNewVaccine} />
+                <MyButtons label="Nova vacina" style={styles.buttonVacina} onPress={goToEditCreateVaccine} />
             </View>
         </ScrollView>
         
